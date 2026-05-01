@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import AlertBox from '../components/AlertBox.astro';
-import ObfuscatedEmail from '../components/ObfuscatedEmail.astro';
 ---
 
 <BaseLayout
@@ -89,26 +88,6 @@ import ObfuscatedEmail from '../components/ObfuscatedEmail.astro';
       </div>
     </section>
 
-    <!-- Strata Council -->
-    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="council-contact-heading">
-      <div class="flex items-start gap-4">
-        <span class="text-4xl flex-shrink-0" aria-hidden="true">📬</span>
-        <div class="flex-1">
-          <h2 id="council-contact-heading" class="text-xl font-bold text-navy mb-2">Strata Council</h2>
-          <p class="text-slate-600 mb-4 text-sm leading-relaxed">
-            The Sky Gate Strata Council represents all owners. Council members are volunteers —
-            responses may take a few days. For faster service on strata management matters,
-            use the Resident Portal.
-          </p>
-          <div class="flex items-center gap-2">
-            <span class="text-skyblue" aria-hidden="true">✉️</span>
-            <ObfuscatedEmail
-              className="text-skyblue hover:text-skyblue-dark underline font-medium text-sm"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Trades & Service Access -->
     <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="trades-contact-heading">
