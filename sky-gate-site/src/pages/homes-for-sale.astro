@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+---
+
+<BaseLayout
+  title="Condos for Sale"
+  description="Browse Sky Gate condo units currently listed for sale at Gateway Road, Langford BC."
+>
+  <PageHeader
+    title="Condos for Sale at Sky Gate"
+    description="Browse current listings at Gateway Road, Langford BC."
+    breadcrumb="Condos for Sale"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-10">
+
+    <p class="text-slate-600 text-lg leading-relaxed">
+      Sky Gate is a modern strata community at Gateway Road, Langford, BC. The link below opens
+      a live map view on <strong>realtor.ca</strong> showing condos currently listed for sale in the Sky Gate area.
+    </p>
+
+    <!-- Single CTA -->
+    <a
+      href="https://www.realtor.ca/map#ZoomLevel=18&Center=48.460460%2C-123.501539&LatitudeMax=48.46174&LongitudeMax=-123.49703&LatitudeMin=48.45918&LongitudeMin=-123.50605&Sort=6-D&PropertyTypeGroupID=1&TransactionTypeId=2&PropertySearchTypeId=3&OwnershipTypeGroupId=2&Currency=CAD"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex items-center gap-6 bg-white rounded-2xl shadow-md hover:shadow-lg border border-slate-100 hover:border-skyblue transition-all p-6 focus-visible:ring-2 focus-visible:ring-skyblue focus-visible:ring-offset-2 focus:outline-none"
+    >
+      <span class="text-5xl flex-shrink-0" aria-hidden="true">🏢</span>
+      <div class="flex-1">
+        <p class="font-bold text-navy text-xl group-hover:text-skyblue transition-colors">View Condos for Sale at Sky Gate</p>
+        <p class="text-slate-500 text-sm mt-1">Gateway Road · Langford, BC · realtor.ca</p>
+        <span class="mt-3 inline-flex items-center text-skyblue text-sm font-semibold">Open on realtor.ca ↗</span>
+      </div>
+    </a>
+
+    <AlertBox type="info" title="Listings are managed externally">
+      <p>
+        Sky Gate strata does not manage or verify real estate listings. All listing information
+        is provided by licensed real estate agents through the MLS® system on realtor.ca.
+        For questions about a specific unit, contact the listing agent directly.
+      </p>
+    </AlertBox>
+
+    <!-- Neighborhood discovery CTA -->
+    <section class="bg-gradient-to-r from-skyblue to-skyblue-dark rounded-2xl text-white p-8">
+      <h2 class="text-2xl font-bold mb-3">Discover the Neighborhood</h2>
+      <p class="mb-4 text-slate-100">
+        Langford offers excellent connectivity, vibrant amenities, and outdoor recreation. Explore walkability scores, nearby parks, attractions, and transit options.
+      </p>
+      <a
+        href="/neighborhood"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-white text-skyblue font-semibold rounded-xl hover:bg-slate-100 transition-colors"
+      >
+        View Neighborhood Guide →
+      </a>
+    </section>
+
+    <!-- Community info for prospective buyers -->
+    <section aria-labelledby="community-heading">
+      <h2 id="community-heading" class="text-2xl font-bold text-navy mb-5">About Sky Gate</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { icon: '📍', title: 'Location', desc: 'Gateway Road, Langford, BC — close to shopping, transit, and the Trans-Canada Highway.' },
+          { icon: '🏊', title: 'Amenities', desc: 'Gym, community room, rooftop patio, community gardens, guest suites, bike and kayak storage.' },
+          { icon: '🔌', title: 'EV Charging', desc: 'Four Level 2 EV charging stalls (83–86) in the parkade, managed through the EVduty app.' },
+          { icon: '🏢', title: 'Professional management', desc: 'Sky Gate is professionally managed by Proline Management Ltd.' },
+        ].map(item => (
+          <div class="bg-slate-50 rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xl" aria-hidden="true">{item.icon}</span>
+              <h3 class="font-semibold text-navy">{item.title}</h3>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Strata docs for buyers -->
+    <div class="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4">
+      <span class="text-3xl flex-shrink-0" aria-hidden="true">📋</span>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-navy text-sm">Strata Documents for Buyers</p>
+        <p class="text-slate-500 text-xs mt-0.5">
+          Form B, depreciation reports, financials, and bylaws are available through the
+          StrataPress Resident Portal. Your real estate agent can request these documents
+          through standard disclosure procedures.
+        </p>
+      </div>
+      <a
+        href="https://portal.stratapress.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-shrink-0 inline-flex items-center gap-1 px-4 py-2 bg-navy text-white text-xs font-semibold rounded-xl hover:bg-navy-light transition-colors whitespace-nowrap"
+      >
+        Resident Portal ↗
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

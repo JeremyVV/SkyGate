@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  title="Emergency Help"
+  description="Emergency contacts and guidance for Sky Gate residents — who to call and what to do."
+>
+  <PageHeader
+    title="Emergency Help"
+    description="Important contacts and guidance for urgent situations."
+    breadcrumb="Emergency Help"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-10">
+
+    <!-- 911 -->
+    <div
+      class="bg-red-600 text-white rounded-2xl p-6 sm:p-8 flex items-start gap-5 shadow-xl"
+      role="alert"
+      aria-label="Life safety emergency — call 911"
+    >
+      <svg class="w-10 h-10 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+      <div>
+        <h2 class="text-2xl font-bold mb-2">Life Safety Emergencies — Call 911</h2>
+        <p class="text-red-100 text-lg mb-5 leading-relaxed">
+          For any situation involving immediate risk to life — fire, medical emergency, violent crime — call 911 immediately. Do not wait.
+        </p>
+        <a
+          href="tel:911"
+          class="inline-flex items-center gap-2 px-7 py-3 bg-white text-red-700 font-bold text-xl rounded-xl hover:bg-red-50 transition-colors shadow-lg"
+        >
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Call 911
+        </a>
+      </div>
+    </div>
+
+    <!-- Proline emergency -->
+    <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6 sm:p-8" aria-labelledby="proline-emerg-heading">
+      <h2 id="proline-emerg-heading" class="text-xl font-bold text-amber-900 mb-2 flex items-center gap-2">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        Proline Management — After-Hours Emergency Line
+      </h2>
+      <p class="text-amber-800 mb-4 text-sm leading-relaxed">
+        For building emergencies that are not life-threatening (flood, elevator entrapment, garage failure, etc.),
+        call the Proline after-hours emergency line.
+      </p>
+      <a
+        href="tel:+12504756440"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white font-bold rounded-xl hover:bg-amber-800 transition-colors text-lg"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        250-475-6440
+      </a>
+      <p class="mt-3 text-sm text-amber-800 font-medium">
+        Press <strong>8</strong> for the 24-hour emergency line.
+      </p>
+    </div>
+
+    <!-- Emergencies list -->
+    <section aria-labelledby="emergencies-heading">
+      <h2 id="emergencies-heading" class="text-2xl font-bold text-navy mb-2">Building Emergencies</h2>
+      <p class="text-slate-500 text-sm mb-5">Call 911 if life is at risk — then Proline's emergency line for building issues.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          { icon: '🔥', label: 'Fire', action: 'Activate fire alarm, evacuate immediately, call 911' },
+          { icon: '🏥', label: 'Medical emergency', action: 'Call 911 immediately' },
+          { icon: '💧', label: 'Flood / burst pipe', action: 'Shut off water if safe to do so, call Proline emergency' },
+          { icon: '🚽', label: 'Sewer backup', action: 'Stop using all fixtures, call Proline emergency' },
+          { icon: '🛗', label: 'Elevator entrapment', action: 'Use elevator emergency phone; call Proline' },
+          { icon: '🚧', label: 'Garage door failure', action: 'Call Proline emergency — do not force entry' },
+          { icon: '⚡', label: 'Power outage', action: 'Check your unit breaker; call Proline if building-wide' },
+          { icon: '🔒', label: 'Security breach', action: 'Call 911 for an active threat; Proline for door/lock issues' },
+          { icon: '🌧️', label: 'Roof leak', action: 'Move belongings clear, call Proline emergency' },
+          { icon: '🌪️', label: 'Storm damage', action: 'Stay inside and safe; call Proline for structural damage' },
+          { icon: '☣️', label: 'Hazardous spill / gas leak', action: 'Evacuate the area; call 911' },
+        ].map(item => (
+          <div class="flex gap-3 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <div>
+              <p class="font-semibold text-navy text-sm">{item.label}</p>
+              <p class="text-slate-500 text-xs leading-relaxed mt-0.5">{item.action}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Non-emergencies -->
+    <section aria-labelledby="non-emerg-heading">
+      <h2 id="non-emerg-heading" class="text-2xl font-bold text-navy mb-4">Non-Emergency Issues</h2>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        These situations are not urgent — use the Resident Portal during business hours:
+      </p>
+      <div class="space-y-3 mb-6">
+        {[
+          { icon: '🔊', label: 'Noise complaints', desc: 'After speaking with neighbours, report persistent noise via the Resident Portal.' },
+          { icon: '🔧', label: 'Minor maintenance', desc: 'Dripping taps, burnt-out hallway lights, minor repairs — submit a maintenance request in the portal.' },
+          { icon: '🚗', label: 'Parking questions', desc: 'Visitor registration, parking inquiries, and unauthorised vehicle reports all go through the portal.' },
+        ].map(item => (
+          <div class="flex gap-4 bg-slate-50 rounded-2xl p-5">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <div>
+              <p class="font-semibold text-navy mb-1">{item.label}</p>
+              <p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a
+        href="https://portal.stratapress.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 px-6 py-3 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors shadow"
+      >
+        Submit via Resident Portal ↗
+      </a>
+    </section>
+
+  </div>
+</BaseLayout>

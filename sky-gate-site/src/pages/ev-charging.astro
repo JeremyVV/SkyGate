@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+---
+
+<BaseLayout
+  title="EV Charging"
+  description="Sky Gate EV charging — four Level 2 shared stalls in the parkade, managed via the EVduty app."
+>
+  <PageHeader
+    title="EV Charging"
+    description="Convenient shared charging for Sky Gate residents and visitors."
+    breadcrumb="EV Charging"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+
+    <!-- Overview -->
+    <section aria-labelledby="overview-heading">
+      <h2 id="overview-heading" class="text-2xl font-bold text-navy mb-4">Overview</h2>
+      <p class="text-slate-600 leading-relaxed mb-4">
+        Sky Gate offers <strong>four public EV charging stalls</strong> located on the main level
+        of the parkade (<strong>Stalls 83–86</strong>).
+      </p>
+      <p class="text-slate-600 leading-relaxed mb-6">
+        These are <strong>Level 2 chargers</strong> (approximately 6.2 kW) — ideal for everyday
+        needs such as topping up while at home or during a visit.
+      </p>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-slate-50 rounded-2xl p-5 text-center">
+          <p class="text-3xl font-bold text-navy mb-1">4</p>
+          <p class="text-slate-500 text-sm">Charging stalls<br />(Stalls 83–86)</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-5 text-center">
+          <p class="text-3xl font-bold text-navy mb-1">6.2 kW</p>
+          <p class="text-slate-500 text-sm">Level 2 chargers</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-5 text-center">
+          <p class="text-3xl font-bold text-navy mb-1">4 hrs</p>
+          <p class="text-slate-500 text-sm">Maximum stay<br />per session</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section aria-labelledby="howto-heading">
+      <h2 id="howto-heading" class="text-2xl font-bold text-navy mb-5">How to Use</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        Charging sessions are managed through the <strong>EVduty mobile app</strong>, which handles
+        access, usage, and billing.
+      </p>
+      <ol class="space-y-3" role="list">
+        {[
+          'Download and open the EVduty app',
+          'Select the Sky Gate charging station',
+          'Plug in your vehicle',
+          'Start your session through the app',
+        ].map((step, i) => (
+          <li class="flex items-start gap-4 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="w-7 h-7 rounded-full bg-skyblue text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+              {i + 1}
+            </span>
+            <span class="text-slate-700 text-sm leading-relaxed pt-0.5">{step}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-4 text-slate-500 text-sm">
+        Charging is billed through the EVduty platform based on current rates.
+      </p>
+    </section>
+
+    <!-- Time limit -->
+    <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6" aria-labelledby="timelimit-heading">
+      <h2 id="timelimit-heading" class="text-xl font-bold text-amber-900 mb-2 flex items-center gap-2">
+        <span aria-hidden="true">⏱️</span> 4-Hour Time Limit
+      </h2>
+      <p class="text-amber-800 leading-relaxed text-sm">
+        To ensure fair access for all residents, each charging session is limited to a
+        <strong>maximum of 4 hours</strong>. Vehicles remaining in a charging stall beyond
+        this limit may be subject to towing.
+      </p>
+    </div>
+
+    <!-- Etiquette -->
+    <section aria-labelledby="etiquette-heading">
+      <h2 id="etiquette-heading" class="text-2xl font-bold text-navy mb-5">Charging Etiquette</h2>
+      <p class="text-slate-600 mb-4 text-sm">These chargers are a shared resource. Please help keep them available and working smoothly:</p>
+      <div class="space-y-3">
+        {[
+          { icon: '⚡', text: 'Move your vehicle promptly once charging is complete' },
+          { icon: '🚫', text: 'Do not use charging stalls for parking without actively charging' },
+          { icon: '🤝', text: 'Be mindful of others waiting to use the chargers' },
+          { icon: '📢', text: 'Report any issues with equipment or access via the Resident Portal' },
+        ].map(item => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Important notes -->
+    <AlertBox type="warning" title="Important notes">
+      <ul class="space-y-1.5 text-sm">
+        <li>Charging stalls are for <strong>active charging only</strong> — not general parking.</li>
+        <li>Do not leave vehicles plugged in longer than necessary.</li>
+        <li>Follow all posted signage and current strata rules.</li>
+        <li>Rates and policies may change over time — check the Resident Portal for updates.</li>
+      </ul>
+    </AlertBox>
+
+    <!-- Issues & Rules -->
+    <section aria-labelledby="issues-heading" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h2 id="issues-heading" class="font-bold text-navy text-lg mb-2 flex items-center gap-2">
+          <span aria-hidden="true">🛠️</span> Issues or Questions
+        </h2>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+          If you experience problems with a charger or notice misuse, report it through the Resident Portal.
+        </p>
+        <a
+          href="https://portal.stratapress.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+        >
+          Report via Portal ↗
+        </a>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h2 class="font-bold text-navy text-lg mb-2 flex items-center gap-2">
+          <span aria-hidden="true">📋</span> Rules &amp; Updates
+        </h2>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+          For the most up-to-date EV charging rules, pricing, and policies, refer to the StrataPress Resident Portal.
+        </p>
+        <a
+          href="https://portal.stratapress.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 px-5 py-2.5 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors text-sm"
+        >
+          View in Portal ↗
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Shared responsibility -->
+    <div class="bg-gradient-to-r from-navy/5 to-skyblue/5 border border-skyblue/20 rounded-2xl p-6">
+      <h2 class="font-bold text-navy text-lg mb-2 flex items-center gap-2">
+        <span aria-hidden="true">🌱</span> Shared Responsibility
+      </h2>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        EV charging is a valuable shared amenity. A little consideration goes a long way in making
+        sure it remains accessible, reliable, and fair for everyone at Sky Gate.
+      </p>
+    </div>
+
+  </div>
+</BaseLayout>

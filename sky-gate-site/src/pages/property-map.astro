@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const layers = [
+  { file: '01_Visitor_Parking.png',         label: 'Visitor Parking',       color: '#3b82f6', icon: '🅿️'  },
+  { file: '07_Visitor_-_Handicapped.png',   label: 'Accessible Parking',    color: '#0ea5e9', icon: '♿'   },
+  { file: '10_No_Parking_Loading_Zone.png', label: 'No Parking / Loading',  color: '#ef4444', icon: '🚫'  },
+  { file: '02_Garbage.png',                 label: 'Garbage',               color: '#64748b', icon: '🗑️'  },
+  { file: '03_Cardboard.png',               label: 'Cardboard',             color: '#f59e0b', icon: '📦'  },
+  { file: '06_Recycling.png',               label: 'Recycling',             color: '#10b981', icon: '♻️'  },
+  { file: '04_Gardens.png',                 label: 'Gardens',               color: '#22c55e', icon: '🌱'  },
+  { file: '05_Pet_Park.png',                label: 'Pet Park',              color: '#84cc16', icon: '🐾'  },
+  { file: '08_Community_Room.png',          label: 'Community Room',        color: '#8b5cf6', icon: '🏠'  },
+  { file: '09_Office.png',                  label: 'Office',                color: '#1e3a8a', icon: '🏢'  },
+];
+---
+
+<BaseLayout
+  title="Property Map"
+  description="Interactive property map of Sky Gate — explore parking, waste areas, gardens, amenities, and more by floor level."
+>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" slot="head" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" is:inline slot="head"></script>
+
+  <PageHeader
+    title="Property Map"
+    description="Explore the Sky Gate property. Toggle layers on or off to highlight specific areas."
+    breadcrumb="Property Map"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 py-8 space-y-6">
+
+    <!-- Level badge -->
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy text-white text-xs font-semibold rounded-full">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+        Ground Level
+      </span>
+      <span class="text-slate-400 text-xs">Scroll or pinch to zoom · drag to pan</span>
+    </div>
+
+    <!-- Map -->
+    <div
+      id="property-map"
+      class="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100"
+      style="height: clamp(360px, 65vh, 720px);"
+      aria-label="Interactive property map of Sky Gate ground level"
+    ></div>
+
+    <!-- Layer toggles -->
+    <div>
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-sm font-semibold text-slate-700 uppercase tracking-wider">Map Layers</h2>
+        <div class="flex gap-2">
+          <button
+            id="btn-all-on"
+            class="text-xs px-3 py-1.5 bg-navy text-white rounded-lg hover:bg-navy-light transition-colors font-medium"
+          >
+            All On
+          </button>
+          <button
+            id="btn-all-off"
+            class="text-xs px-3 py-1.5 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors font-medium"
+          >
+            All Off
+          </button>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+        {layers.map(layer => (
+          <button
+            class="layer-toggle flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 text-sm font-medium transition-all text-left"
+            data-layer={layer.file}
+            data-color={layer.color}
+            style={`border-color: ${layer.color}; background-color: ${layer.color}18;`}
+            aria-pressed="true"
+          >
+            <span class="text-base leading-none flex-shrink-0" aria-hidden="true">{layer.icon}</span>
+            <span class="leading-tight text-slate-700">{layer.label}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const W = 1273, H = 1236;
+    const bounds = [[0, 0], [H, W]];
+
+    const map = L.map('property-map', {
+      crs: L.CRS.Simple,
+      minZoom: -2,
+      maxZoom: 2,
+      zoomSnap: 0.25,
+      maxBounds: [[-H * 0.1, -W * 0.1], [H * 1.1, W * 1.1]],
+      maxBoundsViscosity: 0.8,
+    });
+
+    L.imageOverlay('/map/00_Background.png', bounds).addTo(map);
+    map.fitBounds(bounds, { padding: [8, 8] });
+
+    const overlayMap = {};
+    const files = [
+      '01_Visitor_Parking.png',
+      '07_Visitor_-_Handicapped.png',
+      '10_No_Parking_Loading_Zone.png',
+      '02_Garbage.png',
+      '03_Cardboard.png',
+      '06_Recycling.png',
+      '04_Gardens.png',
+      '05_Pet_Park.png',
+      '08_Community_Room.png',
+      '09_Office.png',
+    ];
+
+    files.forEach(function (file) {
+      const overlay = L.imageOverlay('/map/' + file, bounds);
+      overlay.addTo(map);
+      overlayMap[file] = overlay;
+    });
+
+    function setLayerActive(btn, active) {
+      const file = btn.dataset.layer;
+      const color = btn.dataset.color;
+      btn.setAttribute('aria-pressed', String(active));
+      if (active) {
+        btn.style.borderColor = color;
+        btn.style.backgroundColor = color + '18';
+        btn.style.opacity = '1';
+        overlayMap[file].addTo(map);
+      } else {
+        btn.style.borderColor = '#cbd5e1';
+        btn.style.backgroundColor = '#f1f5f9';
+        btn.style.opacity = '0.55';
+        map.removeLayer(overlayMap[file]);
+      }
+    }
+
+    document.querySelectorAll('.layer-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const isOn = this.getAttribute('aria-pressed') === 'true';
+        setLayerActive(this, !isOn);
+      });
+    });
+
+    document.getElementById('btn-all-on').addEventListener('click', function () {
+      document.querySelectorAll('.layer-toggle').forEach(function (btn) {
+        setLayerActive(btn, true);
+      });
+    });
+
+    document.getElementById('btn-all-off').addEventListener('click', function () {
+      document.querySelectorAll('.layer-toggle').forEach(function (btn) {
+        setLayerActive(btn, false);
+      });
+    });
+  })();
+</script>

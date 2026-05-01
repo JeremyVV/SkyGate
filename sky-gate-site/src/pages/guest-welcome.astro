@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Guest Suite Welcome Guide"
+  description="Welcome guide for guests staying in a Sky Gate guest suite — WiFi, rules, parking, checkout, and emergency contacts."
+>
+  <!-- Print/share bar — hidden in print -->
+  <div class="bg-navy text-white px-4 py-3 no-print" data-pagefind-ignore>
+    <div class="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="/guest-suites" class="text-blue-200 hover:text-white text-sm transition-colors">
+          ← Guest Suites
+        </a>
+        <span class="text-blue-400 text-xs hidden sm:block">|</span>
+        <span class="text-blue-100 text-sm hidden sm:block">Share or print this guide for your arriving guest</span>
+      </div>
+      <button
+        onclick="window.print()"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm font-medium rounded-xl transition-colors"
+        aria-label="Print this welcome guide"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Welcome sheet -->
+  <div class="max-w-2xl mx-auto px-4 py-10 space-y-8" id="welcome-sheet">
+
+    <!-- Header -->
+    <div class="text-center border-b border-slate-200 pb-8">
+      <img
+        src="/images/SG-logo-color.png"
+        alt="Sky Gate"
+        class="h-14 w-auto mx-auto mb-4"
+      />
+      <h1 class="text-3xl font-bold text-navy mb-1">Sky Gate Guest Suite</h1>
+      <p class="text-xl text-slate-500 font-medium">Welcome Guide</p>
+      <p class="mt-4 text-slate-600 leading-relaxed max-w-md mx-auto">
+        Welcome to Sky Gate! We hope you enjoy your stay. This suite is a shared community
+        amenity — please treat it with the same care and respect as your own home.
+      </p>
+    </div>
+
+    <!-- During your stay -->
+    <section aria-labelledby="stay-heading">
+      <h2 id="stay-heading" class="section-heading">During Your Stay</h2>
+      <ul class="checklist">
+        <li>WiFi is available for your use</li>
+        <li>The suite includes a queen bed, bathroom with shower, kitchenette, and TV</li>
+        <li>This is a quiet residential building — please be mindful of neighbours</li>
+      </ul>
+    </section>
+
+    <!-- Occupancy -->
+    <section aria-labelledby="occupancy-heading">
+      <h2 id="occupancy-heading" class="section-heading">Occupancy</h2>
+      <ul class="checklist">
+        <li>Maximum <strong>2 adults</strong> in the suite at any time</li>
+        <li>Guests must be hosted by a Sky Gate resident, who remains responsible for the stay</li>
+      </ul>
+    </section>
+
+    <!-- Important rules -->
+    <section aria-labelledby="rules-heading" class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-5">
+      <h2 id="rules-heading" class="text-lg font-bold text-amber-900 mb-3 flex items-center gap-2">
+        <span aria-hidden="true">🚭</span> Important Rules
+      </h2>
+      <p class="text-amber-800 text-sm mb-3">To ensure comfort and safety for all residents:</p>
+      <ul class="space-y-2">
+        {[
+          'No smoking, vaping, or use of e-cigarettes or similar devices anywhere in the building, suite, or on the grounds',
+          'No pets permitted in the guest suite',
+          'Keep noise at a respectful level at all times',
+        ].map(rule => (
+          <li class="flex items-start gap-2 text-amber-900 text-sm font-medium">
+            <span class="text-amber-600 mt-0.5 flex-shrink-0" aria-hidden="true">✕</span>
+            {rule}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Parking -->
+    <section aria-labelledby="parking-heading">
+      <h2 id="parking-heading" class="section-heading">Parking</h2>
+      <ul class="checklist">
+        <li>Visitor parking may be used during your stay</li>
+        <li>A valid parking pass must be displayed at all times</li>
+        <li>Street parking is limited and not guaranteed</li>
+      </ul>
+    </section>
+
+    <!-- Shared building etiquette -->
+    <section aria-labelledby="etiquette-heading">
+      <h2 id="etiquette-heading" class="section-heading">Shared Building Etiquette</h2>
+      <p class="text-slate-600 text-sm mb-3">Sky Gate is a community of residents. Please:</p>
+      <ul class="checklist">
+        <li>Be respectful in hallways, elevators, and common areas</li>
+        <li>Do not allow unauthorised entry into the building</li>
+        <li>Follow all posted signage and building guidelines</li>
+      </ul>
+    </section>
+
+    <!-- Checkout -->
+    <section aria-labelledby="checkout-heading" class="bg-navy text-white rounded-2xl p-5">
+      <h2 id="checkout-heading" class="text-lg font-bold mb-1 flex items-center gap-2">
+        <span aria-hidden="true">🧼</span> Before You Leave
+      </h2>
+      <p class="text-gold font-bold text-xl mb-4">Check-out time: 11:00 AM</p>
+      <p class="text-blue-200 text-sm mb-3">Before departure, please ensure:</p>
+      <ul class="space-y-2">
+        {[
+          'All personal belongings are removed',
+          'Garbage is disposed of properly',
+          'Bedding, towels, and personal items are removed',
+          'The suite is left clean and tidy',
+          'Mattress protector is returned (laundered) to the caretaker',
+        ].map(item => (
+          <li class="flex items-start gap-2 text-blue-100 text-sm">
+            <span class="w-4 h-4 rounded border border-white/40 flex-shrink-0 mt-0.5" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Access & Keys -->
+    <section aria-labelledby="keys-heading">
+      <h2 id="keys-heading" class="section-heading">Access &amp; Keys</h2>
+      <ul class="checklist">
+        <li>Access devices (keys, fobs, parking passes) are provided through your host resident</li>
+        <li>Please return all items as instructed at the end of your stay</li>
+      </ul>
+    </section>
+
+    <!-- Emergencies -->
+    <section aria-labelledby="emergency-heading" class="bg-red-50 border-2 border-red-200 rounded-2xl p-5">
+      <h2 id="emergency-heading" class="text-lg font-bold text-red-800 mb-3 flex items-center gap-2">
+        <span aria-hidden="true">⚠️</span> Emergencies
+      </h2>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">911</span>
+          <span class="text-red-800 text-sm font-semibold">For life safety emergencies, call 911 first</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">🏠</span>
+          <span class="text-red-700 text-sm">For building-related emergencies, contact your host resident</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Issues -->
+    <section aria-labelledby="issues-heading">
+      <h2 id="issues-heading" class="section-heading">Issues During Your Stay</h2>
+      <p class="text-slate-600 text-sm mb-3">If something isn't working or needs attention:</p>
+      <ul class="checklist">
+        <li>Contact your host resident in the first instance</li>
+        <li>Issues may also be reported through the <a href="https://portal.stratapress.com/" target="_blank" rel="noopener noreferrer" class="text-skyblue underline hover:text-skyblue-dark">Resident Portal</a></li>
+      </ul>
+    </section>
+
+    <!-- Closing -->
+    <div class="text-center border-t border-slate-200 pt-8">
+      <p class="text-slate-600 text-sm leading-relaxed max-w-md mx-auto mb-2">
+        These guest suites are a valued amenity for the entire building. Thoughtful use helps
+        ensure they remain clean, comfortable, and available for future guests.
+      </p>
+      <p class="text-navy font-semibold">Thank you for staying at Sky Gate.</p>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .section-heading {
+    @apply text-lg font-bold text-navy mb-3 flex items-center gap-2;
+  }
+
+  .checklist {
+    @apply space-y-2;
+  }
+
+  .checklist li {
+    @apply flex items-start gap-2 text-slate-600 text-sm leading-relaxed;
+  }
+
+  .checklist li::before {
+    content: '';
+    @apply w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0 mt-1.5;
+    display: block;
+  }
+
+  @media print {
+    .no-print { display: none !important; }
+
+    body { font-size: 11pt; }
+
+    #welcome-sheet {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    /* Keep sections together where possible */
+    section { break-inside: avoid; }
+
+    /* Restore colours for print */
+    .bg-navy { background-color: #1e3a5f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .bg-amber-50 { background-color: #fffbeb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .bg-red-50 { background-color: #fef2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .border-amber-200 { border-color: #fde68a !important; }
+    .border-red-200 { border-color: #fecaca !important; }
+  }
+</style>

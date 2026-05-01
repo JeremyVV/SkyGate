@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout
+  title="Fitness Centre"
+  description="SkyGate Fitness Centre — cardio, strength, and functional training equipment located in Building C."
+>
+  <PageHeader
+    title="Fitness Centre"
+    description="A shared space for health, movement, and everyday workouts."
+    breadcrumb="Amenities / Fitness Centre"
+  />
+
+  <main data-pagefind-body class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Location Alert -->
+    <AlertBox type="info">
+      Located in <strong>Building C</strong>. Please be respectful of others and help keep the space clean and organized.
+    </AlertBox>
+
+    <!-- Overview -->
+    <section aria-labelledby="overview-heading">
+      <h2 id="overview-heading" class="text-2xl font-bold text-navy mb-3">Overview</h2>
+      <p class="text-slate-600 leading-relaxed">
+        The SkyGate Fitness Centre is designed to support a wide range of fitness goals—from quick daily workouts to full strength and cardio routines.
+        The space includes a balanced mix of equipment for cardio, resistance training, and functional movement.
+      </p>
+    </section>
+
+    <!-- Equipment -->
+    <section aria-labelledby="equipment-heading">
+      <h2 id="equipment-heading" class="text-2xl font-bold text-navy mb-5">Equipment</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Cardio -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🏃</span>
+            <h3 class="font-bold text-navy text-lg">Cardio</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Treadmill', 'Elliptical trainer', 'Stationary spin bikes', 'Rowing machine'].map(item => (
+              <li class="flex items-center gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Strength Training -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🏋️</span>
+            <h3 class="font-bold text-navy text-lg">Strength Training</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Squat rack with barbell and plates', 'Dumbbell rack (various weights)', 'Flat and adjustable benches', 'Cable / functional trainer'].map(item => (
+              <li class="flex items-center gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Functional & Mobility -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🧘</span>
+            <h3 class="font-bold text-navy text-lg">Functional &amp; Mobility</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Resistance bands', 'Stability ball', 'Open space for stretching and bodyweight exercises'].map(item => (
+              <li class="flex items-center gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Facilities -->
+    <section aria-labelledby="facilities-heading">
+      <h2 id="facilities-heading" class="text-2xl font-bold text-navy mb-4">Facilities</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {[
+          { icon: '❄️', label: 'Air conditioning' },
+          { icon: '💧', label: 'Water bottle refill' },
+          { icon: '🚻', label: 'Washrooms' },
+          { icon: '📶', label: 'Community WiFi' },
+        ].map(f => (
+          <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{f.icon}</span>
+            <span class="text-slate-700 text-sm font-medium">{f.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Usage Rules -->
+    <section aria-labelledby="usage-heading">
+      <h2 id="usage-heading" class="text-2xl font-bold text-navy mb-4">Using the Fitness Centre</h2>
+      <ul class="space-y-3">
+        {[
+          { icon: '🧼', text: 'Wipe down equipment after use' },
+          { icon: '🔙', text: 'Return all weights and equipment to their proper place' },
+          { icon: '⏱️', text: 'Limit workout time during busy periods' },
+          { icon: '👥', text: 'Ensure guests follow strata rules' },
+          { icon: '🔧', text: 'Report damaged or malfunctioning equipment' },
+        ].map(rule => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{rule.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{rule.text}</p>
+          </div>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Capacity Guidance -->
+    <AlertBox type="info">
+      During peak times, please be mindful of others and share equipment.
+    </AlertBox>
+
+    <!-- Safety & Courtesy -->
+    <section aria-labelledby="safety-heading">
+      <h2 id="safety-heading" class="text-2xl font-bold text-navy mb-4">Safety &amp; Courtesy</h2>
+      <ul class="space-y-3">
+        {[
+          { icon: '💪', text: 'Use equipment responsibly and within your ability' },
+          { icon: '👟', text: 'Wear appropriate footwear at all times' },
+          { icon: '🔇', text: 'Avoid dropping weights or excessive noise' },
+          { icon: '👂', text: 'Be mindful of others sharing the space' },
+        ].map(rule => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{rule.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{rule.text}</p>
+          </div>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Equipment Maintenance -->
+    <AlertBox type="warning" title="Equipment Issues">
+      If equipment is damaged or not functioning properly, please report it using the contact form. Your feedback helps keep the Fitness Centre safe and well-maintained for everyone.
+    </AlertBox>
+
+    <!-- CTA -->
+    <section class="pt-4">
+      <CTAButton
+        href="/contact"
+        label="Report an Issue or Concern"
+        variant="primary"
+      />
+    </section>
+
+  </main>
+</BaseLayout>

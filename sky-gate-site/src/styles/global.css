@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-slate-700 bg-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-skyblue rounded;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-1 px-6 py-3 bg-gold text-white font-semibold rounded-xl shadow hover:bg-gold-dark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-1 px-6 py-3 bg-skyblue text-white font-semibold rounded-xl shadow hover:bg-skyblue-dark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-skyblue focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-1 px-6 py-3 border-2 border-navy text-navy font-semibold rounded-xl hover:bg-navy hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow p-6;
+  }
+}
+
+/* Pagefind overrides */
+.pagefind-ui__search-input {
+  border-radius: 0.75rem !important;
+}

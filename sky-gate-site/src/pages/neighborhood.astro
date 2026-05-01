@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout
+  title="Neighborhood"
+  description="Discover Sky Gate's location in Langford — walkability scores, nearby parks, attractions, and transit options."
+>
+  <PageHeader
+    title="Neighborhood"
+    description="Explore the vibrant Langford community surrounding Sky Gate."
+    breadcrumb="Neighborhood"
+  />
+
+  <main data-pagefind-body class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+
+    <!-- Walkability Scores Section -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-navy">Walkability & Mobility Scores</h2>
+      <p class="text-slate-600">Sky Gate's location at 2465 Gateway Rd, Langford is car-dependent for most errands, but well-connected for biking and transit to Greater Victoria.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Walk Score Card -->
+        <div class="p-6 bg-gradient-to-br from-navy to-navy-light rounded-xl text-white shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold">Walk Score</h3>
+            <span class="text-4xl font-bold text-skyblue">46</span>
+          </div>
+          <p class="text-sm font-semibold text-skyblue mb-2">Car-Dependent</p>
+          <p class="text-sm text-slate-200">Most errands require a car. However, downtown Langford and nearby shops are accessible by short drive or bike.</p>
+        </div>
+
+        <!-- Transit Score Card -->
+        <div class="p-6 bg-gradient-to-br from-skyblue to-skyblue-dark rounded-xl text-white shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold">Transit Score</h3>
+            <span class="text-4xl font-bold text-gold">Good</span>
+          </div>
+          <p class="text-sm font-semibold text-gold mb-2">Some Transit</p>
+          <p class="text-sm text-slate-100">Multiple BC Transit bus lines within 0.1–0.5 km. Connects to Greater Victoria regional routes.</p>
+        </div>
+
+        <!-- Bike Score Card -->
+        <div class="p-6 bg-gradient-to-br from-gold-dark to-gold rounded-xl text-white shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold">Bike Score</h3>
+            <span class="text-4xl font-bold text-navy">49</span>
+          </div>
+          <p class="text-sm font-semibold text-navy mb-2">Somewhat Bikeable</p>
+          <p class="text-sm text-slate-100">Minimal city bike infrastructure, but excellent regional trail access including Galloping Goose.</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-slate-500 pt-4">
+        Scores from <a href="https://www.walkscore.com/score/2465-gateway-rd-langford-bc-canada" target="_blank" rel="noopener noreferrer" class="text-skyblue hover:underline font-semibold">WalkScore.com</a>
+      </p>
+    </section>
+
+    <!-- Nearby Parks -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-navy">Parks & Recreation</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Thetis Lake -->
+        <a
+          href="https://www.google.com/maps/search/Thetis+Lake+Regional+Park+Langford+BC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-skyblue overflow-hidden rounded-lg hover:shadow-lg hover:border-skyblue-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/thetis-lake.jpg" alt="Thetis Lake Regional Park" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-blue-50 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-skyblue transition-colors">Thetis Lake Regional Park</h3>
+              <span class="text-2xl">🏞️</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Over 40km of recreational trails for running, hiking, and dog walking. Swimming, paddling, and sunbathing on the beach in summer months.
+            </p>
+            <p class="text-sm text-skyblue font-semibold">View on Google Maps →</p>
+          </div>
+        </a>
+
+        <!-- Jordie Lunn Bike Park -->
+        <a
+          href="https://www.google.com/maps/search/Jordie+Lunn+Bike+Park+Langford+BC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-gold overflow-hidden rounded-lg hover:shadow-lg hover:border-gold-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/jordie-lunn-park.jpg" alt="Jordie Lunn Bike Park" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-yellow-50 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-gold transition-colors">Jordie Lunn Bike Park</h3>
+              <span class="text-2xl">🚲</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Free recreational cycling space with dirt trails and jump tracks suitable for all skill levels. Memorial to downhill racer Jordie Lunn.
+            </p>
+            <p class="text-sm text-gold font-semibold">View on Google Maps →</p>
+          </div>
+        </a>
+
+        <!-- City Centre Park -->
+        <a
+          href="https://www.google.com/maps/search/City+Centre+Park+Langford+BC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-navy overflow-hidden rounded-lg hover:shadow-lg hover:border-navy-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/city-centre-park.jpg" alt="City Centre Park" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-slate-100 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-navy-light transition-colors">City Centre Park</h3>
+              <span class="text-2xl">🎳</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Family-friendly destination in downtown Langford with the region's only 10-pin bowling alley, 18-hole mini-golf, and Playzone indoor jungle gym.
+            </p>
+            <p class="text-sm text-navy font-semibold">View on Google Maps →</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-navy">Nearby Attractions</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- The Langford Station -->
+        <a
+          href="https://www.langfordstation.ca/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-gold overflow-hidden rounded-lg hover:shadow-lg hover:border-gold-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/langford-station.jpg" alt="The Langford Station" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-yellow-50 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-gold transition-colors">The Langford Station</h3>
+              <span class="text-2xl">🎨</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Vibrant arts and culture district in downtown Langford featuring 13 retrofitted shipping containers with handcrafted home goods, locally made products, unique gifts, and art pieces.
+            </p>
+            <p class="text-sm text-gold font-semibold">Visit website →</p>
+          </div>
+        </a>
+
+        <!-- Malahat Skywalk -->
+        <a
+          href="https://www.malahatskywalk.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-skyblue overflow-hidden rounded-lg hover:shadow-lg hover:border-skyblue-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/malahat-skywalk.jpg" alt="Malahat Skywalk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-blue-50 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-skyblue transition-colors">Malahat Skywalk</h3>
+              <span class="text-2xl">🌉</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Historic attraction featuring scenic suspension bridges and panoramic views of the surrounding landscape. Perfect for a short day trip.
+            </p>
+            <p class="text-sm text-skyblue font-semibold">Visit website →</p>
+          </div>
+        </a>
+
+        <!-- Historic Sites -->
+        <a
+          href="https://www.pc.gc.ca/en/lhn-nhs/bc/fortroddhill"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-navy overflow-hidden rounded-lg hover:shadow-lg hover:border-navy-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/fort-rod-hill.jpg" alt="Fort Rodd Hill & Hatley Castle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-slate-100 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-navy-light transition-colors">Fort Rodd Hill & Hatley Castle</h3>
+              <span class="text-2xl">🏰</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Explore Victoria's maritime heritage at Fort Rodd Hill, a National Historic Site. Nearby Hatley Castle offers historic charm and grounds for exploration.
+            </p>
+            <p class="text-sm text-navy font-semibold">Learn more →</p>
+          </div>
+        </a>
+
+        <!-- Galloping Goose Trail -->
+        <a
+          href="https://www.google.com/maps/search/Galloping+Goose+Trail+Langford+BC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-l-4 border-gold overflow-hidden rounded-lg hover:shadow-lg hover:border-gold-dark transition-all group"
+        >
+          <div class="h-48 bg-slate-200 overflow-hidden">
+            <img src="/images/galloping-goose-trail.jpg" alt="Galloping Goose Trail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6 bg-slate-50 group-hover:bg-yellow-50 transition-colors">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-xl font-semibold text-navy group-hover:text-gold transition-colors">Galloping Goose Trail</h3>
+              <span class="text-2xl">🚴</span>
+            </div>
+            <p class="text-slate-600 mb-3">
+              Multi-use trail system for biking, walking, and jogging. Direct access to Glen Lake beach and Millstream Village. Perfect for weekend adventures.
+            </p>
+            <p class="text-sm text-gold font-semibold">View on Google Maps →</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Transit & Getting Around -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-navy">Getting Around</h2>
+
+      <div class="bg-gradient-to-r from-navy to-navy-light text-white p-8 rounded-xl">
+        <h3 class="text-xl font-semibold mb-4">BC Transit</h3>
+        <p class="mb-4">
+          Langford is served by BC Transit with regional and local bus routes connecting to the rest of Greater Victoria, including the Langford Transit Centre.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <CTAButton
+            href="https://www.bctransit.com/"
+            variant="primary"
+            label="View BC Transit Routes"
+          />
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

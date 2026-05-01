@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger';
+  external?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { href, label, variant = 'primary', external = false, size = 'md' } = Astro.props;
+
+const variantClass = {
+  primary:   'bg-gold text-white hover:bg-gold-dark shadow focus-visible:ring-gold',
+  secondary: 'bg-skyblue text-white hover:bg-skyblue-dark shadow focus-visible:ring-skyblue',
+  outline:   'border-2 border-navy text-navy hover:bg-navy hover:text-white focus-visible:ring-navy',
+  danger:    'bg-red-600 text-white hover:bg-red-700 shadow focus-visible:ring-red-600',
+}[variant];
+
+const sizeClass = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+}[size];
+---
+
+<a
+  href={href}
+  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  class={`inline-flex items-center gap-1 font-semibold rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${variantClass} ${sizeClass}`}
+>
+  {label}{external && <span aria-hidden="true">&thinsp;&#8599;</span>}
+</a>

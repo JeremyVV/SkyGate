@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+---
+
+<BaseLayout
+  title="Guest Suites"
+  description="Sky Gate's two guest suites — comfortable on-site accommodation for residents' visiting friends and family."
+>
+  <PageHeader
+    title="Guest Suites"
+    description="Comfortable, convenient accommodation for your visiting guests."
+    breadcrumb="Guest Suites"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+
+    <!-- Restrictions notice -->
+    <AlertBox type="warning" title="Owner use only — restrictions apply">
+      <p>Guest suites are available to <strong>strata owners</strong> hosting visiting guests. Tenants are not eligible to book the guest suites. Use is subject to strata rules, including maximum stay limits, booking procedures, and fees. Contact Proline Management for details.</p>
+    </AlertBox>
+
+    <!-- Guest welcome sheet CTA -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-skyblue/10 border border-skyblue/30 rounded-2xl px-6 py-5">
+      <div>
+        <p class="font-semibold text-navy text-base">Guest arriving soon?</p>
+        <p class="text-slate-600 text-sm mt-0.5">Share the welcome guide with them — it covers WiFi, rules, parking, check-out, and what to do in an emergency.</p>
+      </div>
+      <a
+        href="/guest-welcome"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors text-sm whitespace-nowrap flex-shrink-0"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+        Guest Welcome Guide
+      </a>
+    </div>
+
+    <!-- Overview -->
+    <section aria-labelledby="overview-heading">
+      <h2 id="overview-heading" class="text-2xl font-bold text-navy mb-4">Overview</h2>
+      <p class="text-slate-600 leading-relaxed mb-4">
+        Sky Gate offers <strong>two guest suites</strong> designed to provide a private, on-site
+        stay for friends and family visiting residents.
+      </p>
+      <p class="text-slate-600 leading-relaxed">
+        Each suite is a self-contained bachelor-style unit offering a simple and comfortable
+        space just steps from your home — a practical alternative to off-site accommodation.
+      </p>
+    </section>
+
+    <!-- Suite features -->
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading" class="text-2xl font-bold text-navy mb-5">Suite Features</h2>
+      <p class="text-slate-600 mb-5 text-sm">Each guest suite includes:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {[
+          { icon: '🛏️', label: 'Queen bed' },
+          { icon: '🚿', label: 'Private bathroom with shower' },
+          { icon: '🍳', label: 'Kitchenette' },
+          { icon: '🛋️', label: 'Seating & living space' },
+          { icon: '📶', label: 'WiFi access' },
+        ].map(f => (
+          <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3.5">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{f.icon}</span>
+            <span class="text-slate-700 text-sm font-medium">{f.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section aria-labelledby="booking-heading" class="bg-white rounded-2xl shadow-md p-6 sm:p-8">
+      <h2 id="booking-heading" class="text-xl font-bold text-navy mb-3 flex items-center gap-2">
+        <span aria-hidden="true">📅</span> Booking Information
+      </h2>
+      <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+        Guest suites are available to <strong>owners</strong> hosting visiting guests.
+        Proline Management coordinates reservations, access, and any applicable fees.
+      </p>
+      <a
+        href="https://www.prolinemanagement.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+      >
+        Contact Proline to Book ↗
+      </a>
+    </section>
+
+    <!-- Rules -->
+    <section aria-labelledby="rules-heading">
+      <h2 id="rules-heading" class="text-2xl font-bold text-navy mb-4">Rules &amp; Requirements</h2>
+      <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+        Use of the guest suites is subject to current strata rules and policies, including:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+        {[
+          'Maximum stay durations',
+          'Booking procedures and fees',
+          'Cleaning expectations',
+          'Guest responsibilities',
+        ].map(rule => (
+          <div class="flex items-center gap-2 bg-slate-50 rounded-xl px-4 py-3 text-sm text-slate-700">
+            <span class="text-skyblue flex-shrink-0" aria-hidden="true">→</span>
+            {rule}
+          </div>
+        ))}
+      </div>
+      <p class="text-slate-500 text-sm mb-4">For the most up-to-date policies, refer to the Resident Portal.</p>
+      <a
+        href="https://portal.stratapress.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 px-5 py-2.5 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors text-sm"
+      >
+        View Rules in Portal ↗
+      </a>
+    </section>
+
+    <!-- What to tell guests -->
+    <section aria-labelledby="guest-info-heading" class="bg-navy text-white rounded-2xl p-6 sm:p-8">
+      <h2 id="guest-info-heading" class="text-2xl font-bold mb-2 flex items-center gap-3">
+        <span aria-hidden="true">📣</span> What to Tell Your Guests Before Arrival
+      </h2>
+      <p class="text-blue-200 text-sm mb-7 leading-relaxed">
+        Share these details with your guests ahead of time for a smooth, comfortable stay.
+      </p>
+
+      <div class="space-y-6">
+
+        <div>
+          <h3 class="font-bold text-gold mb-3 text-sm uppercase tracking-wider">Getting Here &amp; Access</h3>
+          <ul class="space-y-2">
+            {[
+              'How to access the building and guest suite',
+              'Entry instructions — fob, intercom, or meeting the host',
+              'Visitor parking rules and where to park',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-blue-100 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gold mb-3 text-sm uppercase tracking-wider">During Their Stay</h3>
+          <ul class="space-y-2">
+            {[
+              'WiFi access is available in the suite',
+              'The suite includes a kitchenette, bathroom, and basic furnishings',
+              'Be mindful of neighbours — keep noise levels reasonable',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-blue-100 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gold mb-3 text-sm uppercase tracking-wider">Shared Building Etiquette</h3>
+          <ul class="space-y-2">
+            {[
+              'Respect common areas — hallways, elevators, and amenities',
+              'Do not allow unauthorised access into the building',
+              'Follow all posted signage and building guidelines',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-blue-100 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-gold mb-3 text-sm uppercase tracking-wider">Before Departure</h3>
+          <ul class="space-y-2">
+            {[
+              'Leave the suite clean and in good condition',
+              'Remove all personal belongings',
+              'Follow any posted checkout instructions',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-blue-100 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-6 bg-white/10 rounded-xl px-5 py-4">
+        <p class="text-blue-100 text-sm leading-relaxed">
+          <strong class="text-white">Helpful tip:</strong> A quick message or checklist sent to your guest before arrival goes a long way in making their stay seamless — and helps keep the suites in great condition for everyone.
+        </p>
+      </div>
+    </section>
+
+    <!-- Shared responsibility -->
+    <section aria-labelledby="shared-heading">
+      <h2 id="shared-heading" class="text-2xl font-bold text-navy mb-5">Shared Responsibility</h2>
+      <div class="space-y-3">
+        {[
+          { icon: '✨', text: 'Ensure the suite is left in good condition after each stay' },
+          { icon: '📋', text: 'Follow all posted instructions and guidelines' },
+          { icon: '📢', text: 'Report any issues promptly through the Resident Portal' },
+        ].map(item => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Report issues -->
+    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="report-suite-heading">
+      <h2 id="report-suite-heading" class="font-bold text-navy text-xl mb-2 flex items-center gap-2">
+        <span aria-hidden="true">🛠️</span> Issues or Questions
+      </h2>
+      <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+        If you notice any concerns with a guest suite, please report it through the Resident Portal.
+      </p>
+      <a
+        href="https://portal.stratapress.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+      >
+        Report via Portal ↗
+      </a>
+    </section>
+
+    <!-- Closing -->
+    <div class="bg-gradient-to-r from-navy/5 to-skyblue/5 border border-skyblue/20 rounded-2xl p-6 text-center">
+      <h2 class="font-bold text-navy text-lg mb-2">Welcoming Your Guests</h2>
+      <p class="text-slate-600 text-sm leading-relaxed max-w-xl mx-auto">
+        The guest suites are a valued amenity that help make Sky Gate feel like home — not just
+        for residents, but for the people who visit them. Thoughtful use helps ensure they
+        remain available and enjoyable for everyone.
+      </p>
+    </div>
+
+    <div>
+      <a href="/amenities" class="inline-flex items-center gap-1 text-skyblue hover:text-skyblue-dark text-sm font-medium transition-colors">
+        ← Back to all amenities
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  icon: string;
+  image?: string;
+  notes?: string;
+  href?: string;
+}
+
+const { name, description, icon, image, notes, href } = Astro.props;
+---
+
+<div class={`bg-white rounded-2xl shadow-md overflow-hidden transition-shadow ${href ? 'hover:shadow-xl' : 'hover:shadow-lg'}`}>
+  {image ? (
+    <div class="h-48 overflow-hidden">
+      <img src={image} alt={name} class="w-full h-full object-cover" loading="lazy" />
+    </div>
+  ) : (
+    <div class="h-24 bg-gradient-to-br from-navy to-skyblue-dark flex items-center justify-center">
+      <span class="text-5xl" aria-hidden="true">{icon}</span>
+    </div>
+  )}
+  <div class="p-6">
+    <div class="flex items-center gap-2 mb-2">
+      {image && <span class="text-2xl" aria-hidden="true">{icon}</span>}
+      <h3 class="text-navy font-bold text-lg">{name}</h3>
+    </div>
+    <p class="text-slate-600 text-sm leading-relaxed mb-3">{description}</p>
+    {notes && (
+      <p class="text-xs text-slate-500 bg-slate-50 rounded-xl p-3 leading-relaxed">{notes}</p>
+    )}
+    {href && (
+      <a href={href} class="mt-4 inline-flex items-center text-skyblue text-sm font-semibold hover:text-skyblue-dark transition-colors">
+        Full details →
+      </a>
+    )}
+  </div>
+</div>

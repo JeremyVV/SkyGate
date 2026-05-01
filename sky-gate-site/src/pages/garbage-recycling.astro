@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout
+  title="Garbage & Recycling"
+  description="Garbage and recycling guidelines for Sky Gate residents — sorting, large items, hazardous materials, and reporting issues."
+>
+  <PageHeader
+    title="Garbage &amp; Recycling"
+    description="Keeping Sky Gate clean, safe, and welcoming starts with using the garbage and recycling areas properly."
+    breadcrumb="Garbage & Recycling"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+
+    <!-- Intro -->
+    <p class="text-slate-600 leading-relaxed">
+      Our shared waste rooms are for regular household garbage and approved recycling only. Please take a moment to sort items correctly, flatten boxes, and keep the area tidy for your neighbours and the collection team.
+    </p>
+
+    <AlertBox type="info" title="Know Your Bins">
+      <p class="text-sm">
+        Sky Gate has dedicated bins for kitchen scraps, containers, paper/cardboard, and garbage. Using the correct bin helps reduce costs, prevent odours, and keeps the building clean for everyone.
+      </p>
+    </AlertBox>
+
+    <!-- What goes where -->
+    <section aria-labelledby="sorting-heading">
+      <h2 id="sorting-heading" class="text-2xl font-bold text-navy mb-6">What Goes Where</h2>
+
+      <!-- Kitchen Scraps -->
+      <div class="rounded-2xl border-2 border-lime-300 bg-lime-50 p-6 mb-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl" aria-hidden="true">🥬</span>
+          <h3 class="font-bold text-lg text-lime-800">Kitchen Scraps</h3>
+        </div>
+        <p class="text-slate-600 text-sm mb-3 leading-relaxed">
+          Use the kitchen scraps bin for organic food waste only.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-4">
+          {[
+            'Fruit and vegetables',
+            'Meat, bones, nuts, shells, and solidified fats',
+            'Dairy products',
+            'Coffee grounds, filters, and tea bags',
+          ].map(item => (
+            <li class="flex items-start gap-1.5 text-sm text-slate-600">
+              <span class="text-lime-600 mt-0.5 flex-shrink-0" aria-hidden="true">•</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          <strong>Do not include:</strong> branches, grass clippings, or biodegradable bags/products.
+        </p>
+      </div>
+
+      <!-- Containers -->
+      <div class="rounded-2xl border-2 border-blue-300 bg-blue-50 p-6 mb-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl" aria-hidden="true">🧴</span>
+          <h3 class="font-bold text-lg text-blue-800">Tin &amp; Rigid Plastic Containers</h3>
+        </div>
+        <p class="text-slate-600 text-sm mb-3 leading-relaxed">
+          Place clean, rigid containers in this bin. Items should be rinsed and free of food residue.
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-4">
+          {[
+            'Plastic bottles, jars, and jugs (no glass)',
+            'Plastic trays and clamshells',
+            'Coffee cups and lids (rinsed)',
+            'Caps, tops, lids, and pumps',
+            'Soup and milk cartons',
+            'Tin and aluminum cans',
+            'Shampoo and detergent bottles',
+            'Rinsed foil wrap and take-out containers',
+          ].map(item => (
+            <li class="flex items-start gap-1.5 text-sm text-slate-600">
+              <span class="text-blue-500 mt-0.5 flex-shrink-0" aria-hidden="true">•</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Paper -->
+      <div class="rounded-2xl border-2 border-amber-300 bg-amber-50 p-6 mb-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl" aria-hidden="true">📄</span>
+          <h3 class="font-bold text-lg text-amber-800">Mixed Paper &amp; Cardboard</h3>
+        </div>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-4">
+          {[
+            'Newspapers, inserts, and flyers',
+            'Magazines, catalogues, and phone books',
+            'Paper egg cartons and trays',
+            'Household paper',
+            'Cereal and paperboard boxes',
+            'Paper bags',
+            'Shredded paper',
+            'Cardboard (flattened)',
+          ].map(item => (
+            <li class="flex items-start gap-1.5 text-sm text-slate-600">
+              <span class="text-amber-500 mt-0.5 flex-shrink-0" aria-hidden="true">•</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          <strong>Please flatten all cardboard boxes</strong> before placing them in the bin.
+        </p>
+      </div>
+
+      <!-- Garbage -->
+      <div class="rounded-2xl border-2 border-slate-300 bg-slate-100 p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl" aria-hidden="true">🗑️</span>
+          <h3 class="font-bold text-lg text-slate-800">Garbage</h3>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Garbage bins are located in the fenced garbage areas and are clearly marked. These are for regular household refuse only. All garbage must be <strong>securely bagged and tied</strong> before being placed in the bin.
+        </p>
+        <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+          Separate bins are also provided for cardboard — please ensure boxes are flattened before disposal.
+        </p>
+      </div>
+    </section>
+
+    <!-- Do not place -->
+    <section aria-labelledby="donotplace-heading">
+      <h2 id="donotplace-heading" class="text-2xl font-bold text-navy mb-4">Do Not Place These Items in the Bins</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        Some items cannot go in the garbage or recycling bins and must be handled separately. Please do not dispose of the following in the garbage area:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {[
+          'Furniture, mattresses, and bed frames',
+          'Shelving and appliances',
+          'Computers and electronics',
+          'Batteries',
+          'Paint, solvents, chemicals, or hazardous materials',
+          'Propane tanks or flammable materials',
+          'Renovation or construction debris',
+          'Flooring, drywall, wood, tile, or fixtures',
+          'Tires or automotive parts',
+          'Large seasonal items',
+          'Any oversized item that does not fit safely inside the bin',
+        ].map(item => (
+          <div class="flex items-start gap-2.5 bg-white border border-slate-100 rounded-xl px-4 py-3 shadow-sm">
+            <span class="text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true">✕</span>
+            <p class="text-sm text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-slate-500 text-sm mt-4 leading-relaxed">
+        If you are unsure whether something belongs in the garbage or recycling area, please arrange private disposal or ask before leaving it behind.
+      </p>
+    </section>
+
+    <!-- Large items -->
+    <section aria-labelledby="largeitems-heading">
+      <h2 id="largeitems-heading" class="text-2xl font-bold text-navy mb-4">Large Items Are the Resident's Responsibility</h2>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        Large items must not be left in the garbage room, beside the bins, in the parkade, hallways, stairwells, loading areas, or any other common property area. This includes furniture, mattresses, appliances, electronics, shelving, bed frames, and similar bulky items.
+      </p>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        Residents are responsible for arranging removal at their own expense through a private disposal service, recycling depot, donation pickup, or other suitable arrangement.
+      </p>
+      <AlertBox type="warning" title="Items left behind may result in:">
+        <ul class="space-y-1 text-sm">
+          <li>Removal costs being billed back to the responsible strata lot</li>
+          <li>Bylaw or rule enforcement</li>
+          <li>Possible fines or other enforcement steps</li>
+          <li>Additional costs to the community if the responsible party cannot be identified</li>
+        </ul>
+      </AlertBox>
+    </section>
+
+    <!-- Keeping it clean -->
+    <section aria-labelledby="clean-heading">
+      <h2 id="clean-heading" class="text-2xl font-bold text-navy mb-5">Keeping the Garbage Area Clean</h2>
+      <div class="space-y-3">
+        {[
+          { icon: '🛍️', title: 'Bag and tie garbage', desc: 'All household garbage must be securely bagged and tied. Double-bag anything that may leak or create odours.' },
+          { icon: '📦', title: 'Flatten boxes', desc: 'All cardboard boxes must be broken down and flattened before being placed in the recycling container. Unflattened boxes fill the bins quickly and make it harder for others to use the room.' },
+          { icon: '✅', title: 'Use the correct bin', desc: 'Place recyclables, cardboard, glass, and garbage in the correct containers. Mixing materials can contaminate recycling and increase disposal costs.' },
+          { icon: '🚫', title: 'Do not leave items beside bins', desc: 'If an item does not fit inside the correct bin, it does not belong in the garbage room. Please remove it privately.' },
+          { icon: '🏢', title: 'Keep common areas clear', desc: 'Garbage, recycling, and unwanted items must not be left in stairwells, hallways, parkade areas, lobbies, or other common areas.' },
+        ].map(rule => (
+          <div class="flex gap-4 bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <span class="text-2xl flex-shrink-0" aria-hidden="true">{rule.icon}</span>
+            <div>
+              <h3 class="font-semibold text-navy mb-1">{rule.title}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{rule.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Hazardous materials -->
+    <section aria-labelledby="hazardous-heading">
+      <h2 id="hazardous-heading" class="text-2xl font-bold text-navy mb-4">Hazardous Materials</h2>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        Hazardous materials must never be placed in the garbage or recycling bins. This includes paint, solvents, chemicals, pesticides, propane tanks, batteries, flammable materials, and similar items.
+      </p>
+      <AlertBox type="warning" title="Hazardous materials create serious risks">
+        <p>These materials can create fire, safety, environmental, and collection risks. Please take hazardous items to an appropriate depot or disposal facility.</p>
+      </AlertBox>
+    </section>
+
+    <!-- Help keep costs down -->
+    <div class="bg-gradient-to-br from-navy to-navy-light text-white rounded-2xl p-6 sm:p-8">
+      <div class="flex gap-4 items-start">
+        <span class="text-3xl flex-shrink-0" aria-hidden="true">🤝</span>
+        <div>
+          <h2 class="text-lg font-bold mb-2">Help Keep Costs Down</h2>
+          <p class="text-blue-100 text-sm leading-relaxed">
+            Improper disposal affects everyone. Contaminated recycling, dumped furniture, hazardous materials, and overflowing bins can result in extra cleanup costs, additional hauling charges, and increased strata expenses.
+          </p>
+          <p class="text-blue-100 text-sm leading-relaxed mt-2">
+            A clean garbage area is one of those small things that makes a big difference. Thank you for doing your part.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report -->
+    <section aria-labelledby="report-heading">
+      <h2 id="report-heading" class="text-2xl font-bold text-navy mb-4">Report an Issue</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        If the garbage area is full, blocked, unsafe, has odour concerns, or if you notice dumped items, please report it through the Resident Portal. Include as much detail as possible — building, location, date, time, and a photo if available.
+      </p>
+      <CTAButton href="https://portal.stratapress.com/" label="Report via Resident Portal" variant="primary" external={true} />
+    </section>
+
+  </div>
+</BaseLayout>

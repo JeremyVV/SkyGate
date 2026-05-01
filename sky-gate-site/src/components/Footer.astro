@@ -1,0 +1,106 @@
+---
+const col1 = [
+  { label: 'Home', href: '/' },
+  { label: 'Amenities', href: '/amenities' },
+  { label: 'Visitor Parking', href: '/visitor-parking' },
+  { label: 'EV Charging', href: '/ev-charging' },
+  { label: 'Garbage & Recycling', href: '/garbage-recycling' },
+  { label: 'Search', href: '/search' },
+];
+
+const col2 = [
+  { label: 'Owners & Residents', href: '/residents' },
+  { label: 'Rules & Bylaws', href: '/rules-bylaws' },
+  { label: 'Condos for Sale', href: '/homes-for-sale' },
+];
+
+const col3 = [
+  { label: 'Contact', href: '/contact' },
+  { label: 'Emergency Help', href: '/emergency' },
+  { label: 'Trades Access', href: '/trades-access' },
+];
+---
+
+<footer class="bg-navy text-blue-100 mt-auto" data-pagefind-ignore>
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <img src="/images/SG-logo-white-300x209.png" alt="Sky Gate" class="h-12 w-auto mb-4" />
+        <p class="text-sm text-blue-200 leading-relaxed mb-4">
+          A modern strata community in Langford, BC.<br />
+          Professionally managed by Proline Management Ltd.
+        </p>
+        <div class="flex flex-col gap-2 text-sm">
+          <a href="https://portal.stratapress.com/" target="_blank" rel="noopener noreferrer"
+             class="text-gold hover:text-gold-light transition-colors font-medium">
+            Resident Portal (StrataPress) ↗
+          </a>
+          <a href="https://www.prolinemanagement.com/" target="_blank" rel="noopener noreferrer"
+             class="text-blue-300 hover:text-white transition-colors">
+            Proline Management ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Links col 1 -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Site</h3>
+        <ul class="space-y-2">
+          {col1.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links col 2 -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Owners &amp; Residents</h3>
+        <ul class="space-y-2">
+          {col2.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links col 3 — Contact group -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h3>
+        <ul class="space-y-2">
+          {col3.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-navy-light mt-10 pt-8 space-y-4">
+      <p class="text-xs text-blue-200 leading-relaxed max-w-3xl">
+        This website is provided for general informational purposes only and does not replace official strata records.
+        All official documents, bylaws, rules, requests, and correspondence are maintained through the StrataPress resident portal.
+      </p>
+      <p class="text-xs text-blue-200 leading-relaxed max-w-3xl">
+        Sky Gate is professionally managed by Proline Management Ltd.
+        In the event of a strata emergency, contact Proline's emergency line.
+        For immediate danger, call 911.
+      </p>
+      <p class="text-xs text-blue-400">
+        &copy; {new Date().getFullYear()} Sky Gate Strata Corporation. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

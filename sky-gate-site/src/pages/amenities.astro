@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AmenityCard from '../components/AmenityCard.astro';
+import AlertBox from '../components/AlertBox.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const amenities = [
+  {
+    name: 'Fitness Centre',
+    description: 'Located in Building C, the SkyGate Fitness Centre offers a well-equipped space for cardio, strength training, and functional workouts. Designed for everyday use, it supports a wide range of fitness routines for residents.',
+    icon: '🏋️',
+    image: '/images/gym.png',
+    notes: 'Air-conditioned with washrooms and WiFi. Wipe down equipment after use. See the full fitness guide for details.',
+    href: '/gym',
+  },
+  {
+    name: 'Community Room',
+    description: 'A relaxed, multi-use space for casual meetups, remote work, games, and quiet time. Features a kitchen area, game cabinets, foosball, and WiFi.',
+    icon: '🎉',
+    image: '/images/Community_Room.jpg',
+    notes: 'Available to all residents. Shared as a calm everyday space — not a large event venue. First-come, first-served.',
+    href: '/community-room',
+  },
+  {
+    name: 'Rooftop Patio',
+    description: 'Enjoy stunning views from the rooftop patio — perfect for relaxing or socialising.',
+    icon: '🌇',
+    notes: 'Open seasonally. Please clean up after use and be mindful of noise.',
+  },
+  {
+    name: 'Community Gardens',
+    description: 'Raised garden beds available to residents who love growing their own produce and flowers.',
+    icon: '🌱',
+    image: '/images/garden_beds.jpg',
+    notes: 'Beds are assigned on request. Contact Proline Management to check availability.',
+  },
+  {
+    name: 'Bike Storage',
+    description: 'Secure indoor bike storage in the parkade, accessible with your building fob.',
+    icon: '🚲',
+    notes: 'Use your fob for access. Secure bikes with your own lock. Keep aisles clear.',
+  },
+  {
+    name: 'Kayak & Paddleboard Storage',
+    description: 'Dedicated storage for kayaks, paddleboards, and similar watercraft.',
+    icon: '🛶',
+    notes: 'Spaces are allocated — contact Proline Management to register your watercraft.',
+  },
+  {
+    name: 'Guest Suites',
+    description: 'Two self-contained bachelor-style suites for visiting friends and family. Each includes a queen bed, private bathroom, kitchenette, and WiFi.',
+    icon: '🛏️',
+    notes: 'Available to strata owners only — tenants are not eligible. Contact Proline Management to check availability and book.',
+    href: '/guest-suites',
+  },
+];
+---
+
+<BaseLayout
+  title="Amenities"
+  description="Sky Gate amenities: gym, community room, rooftop patio, community gardens, bike storage, and kayak storage."
+>
+  <PageHeader
+    title="Amenities"
+    description="Enjoy the shared spaces and facilities that make Sky Gate a great place to live."
+    breadcrumb="Amenities"
+  />
+
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <AlertBox type="info" title="Using shared amenities">
+      <p><strong>Community Gardens</strong> and <strong>Guest Suites</strong> require coordination through Proline Management — see each listing for details. All other amenities are first-come, first-served. Guest suites are available to strata owners only.</p>
+    </AlertBox>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      {amenities.map(amenity => (
+        <AmenityCard {...amenity} />
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-slate-500 mb-5">To book a Community Garden bed, use the Resident Portal.</p>
+      <CTAButton href="https://portal.stratapress.com/" label="Book Garden via Portal" variant="primary" external={true} />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'danger' | 'success';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const styles = {
+  info:    { wrap: 'bg-blue-50 border-blue-200',   icon: '&#8505;',  tc: 'text-blue-800',  bc: 'text-blue-700' },
+  warning: { wrap: 'bg-amber-50 border-amber-200', icon: '&#9888;',  tc: 'text-amber-800', bc: 'text-amber-700' },
+  danger:  { wrap: 'bg-red-50 border-red-300',     icon: '&#128680;', tc: 'text-red-800',   bc: 'text-red-700' },
+  success: { wrap: 'bg-green-50 border-green-200', icon: '&#10003;', tc: 'text-green-800', bc: 'text-green-700' },
+};
+
+const s = styles[type];
+---
+
+<div class={`rounded-2xl border-2 p-4 sm:p-6 ${s.wrap}`} role="note">
+  <div class="flex items-start gap-3">
+    <span class="text-xl flex-shrink-0 mt-0.5 font-bold" aria-hidden="true" set:html={s.icon} />
+    <div class={s.bc}>
+      {title && <p class={`font-bold text-base mb-1 ${s.tc}`}>{title}</p>}
+      <slot />
+    </div>
+  </div>
+</div>

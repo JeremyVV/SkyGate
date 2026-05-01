@@ -1,0 +1,39 @@
+---
+// The council email is assembled client-side only.
+// Never place the address as plain text in this file.
+interface Props {
+  displayText?: string;
+  className?: string;
+}
+const { displayText, className = '' } = Astro.props;
+// Unique ID scoped to each instance
+const uid = `em${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<!-- Honeypot to confuse scrapers (hidden from users and screen readers) -->
+<span aria-hidden="true" style="display:none;position:absolute;left:-9999px" tabindex="-1">
+  contact&#64;example&#46;invalid
+</span>
+
+<a
+  id={uid}
+  href="#"
+  class={className}
+  aria-label="Email the Strata Council"
+>
+  {displayText ?? 'Email Council'}
+</a>
+
+<noscript>
+  <span class="text-slate-500 text-sm">(Enable JavaScript to view the council email address, or use the Resident Portal)</span>
+</noscript>
+
+<script define:vars={{ uid }}>
+  // base64 of council@skygatestrata.com — assembled at runtime only
+  const el = document.getElementById(uid);
+  if (el) {
+    const addr = atob('Y291bmNpbEBza3lnYXRlc3RyYXRhLmNvbQ==');
+    el.href = 'mailto:' + addr;
+    el.textContent = addr;
+  }
+</script>

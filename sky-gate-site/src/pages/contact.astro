@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+import ObfuscatedEmail from '../components/ObfuscatedEmail.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact information for Sky Gate — Resident Portal, Proline Management, strata council, and emergency contacts."
+>
+  <PageHeader
+    title="Contact"
+    description="How to reach the right people at Sky Gate."
+    breadcrumb="Contact"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-8">
+
+    <AlertBox type="danger" title="Emergency?">
+      <p>
+        For life-threatening emergencies, call <strong>911</strong> immediately.
+        For building emergencies, see the <a href="/emergency" class="underline font-semibold hover:opacity-80">Emergency Help</a> page for the Proline after-hours line.
+      </p>
+    </AlertBox>
+
+    <!-- StrataPress Portal -->
+    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="portal-contact-heading">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0" aria-hidden="true">🖥️</span>
+        <div class="flex-1">
+          <h2 id="portal-contact-heading" class="text-xl font-bold text-navy mb-2">Resident Portal (StrataPress)</h2>
+          <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+            The primary channel for all strata matters — maintenance requests, documents,
+            owner correspondence, and bylaw information.
+          </p>
+          <a
+            href="https://portal.stratapress.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+          >
+            Open Resident Portal ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proline -->
+    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="proline-contact-heading">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0" aria-hidden="true">🏢</span>
+        <div class="flex-1">
+          <h2 id="proline-contact-heading" class="text-xl font-bold text-navy mb-2">Proline Management Ltd.</h2>
+          <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+            Sky Gate's property manager. For non-emergency enquiries during business hours,
+            use the Resident Portal or visit their website.
+          </p>
+          <div class="space-y-2 mb-4">
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-skyblue" aria-hidden="true">🌐</span>
+              <a
+                href="https://www.prolinemanagement.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-skyblue hover:text-skyblue-dark underline font-medium"
+              >
+                prolinemanagement.com
+              </a>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-amber-600" aria-hidden="true">📞</span>
+              <span class="text-slate-700">
+                After-hours emergency:&nbsp;
+                <a href="tel:+12504756440" class="font-semibold text-navy hover:text-skyblue transition-colors">250-475-6440</a>
+                <span class="text-slate-500">&nbsp;— press <strong>8</strong> for the 24-hour emergency line</span>
+              </span>
+            </div>
+          </div>
+          <a
+            href="https://www.prolinemanagement.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 px-5 py-2.5 border-2 border-navy text-navy font-semibold rounded-xl hover:bg-navy hover:text-white transition-colors text-sm"
+          >
+            Visit Proline ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strata Council -->
+    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="council-contact-heading">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0" aria-hidden="true">📬</span>
+        <div class="flex-1">
+          <h2 id="council-contact-heading" class="text-xl font-bold text-navy mb-2">Strata Council</h2>
+          <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+            The Sky Gate Strata Council represents all owners. Council members are volunteers —
+            responses may take a few days. For faster service on strata management matters,
+            use the Resident Portal.
+          </p>
+          <div class="flex items-center gap-2">
+            <span class="text-skyblue" aria-hidden="true">✉️</span>
+            <ObfuscatedEmail
+              className="text-skyblue hover:text-skyblue-dark underline font-medium text-sm"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trades & Service Access -->
+    <section class="bg-white rounded-2xl shadow-md p-6 sm:p-8" aria-labelledby="trades-contact-heading">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0" aria-hidden="true">🛠️</span>
+        <div class="flex-1">
+          <h2 id="trades-contact-heading" class="text-xl font-bold text-navy mb-2">Trades &amp; Service Providers</h2>
+          <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+            Contractors and maintenance personnel working at Sky Gate must check in with the
+            Caretaker upon arrival. All work authorisation and approvals go through Proline Management.
+          </p>
+          <a href="/trades-access"
+             class="inline-flex items-center gap-1 px-5 py-2.5 border-2 border-navy text-navy font-semibold rounded-xl hover:bg-navy hover:text-white transition-colors text-sm">
+            Trades Access Guide →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency reminder -->
+    <section class="bg-gradient-to-r from-navy to-navy-light text-white rounded-2xl p-6 sm:p-8" aria-labelledby="emerg-reminder-heading">
+      <h2 id="emerg-reminder-heading" class="text-xl font-bold mb-4">Emergency Contacts at a Glance</h2>
+      <div class="space-y-3 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">!</span>
+          <span class="font-semibold">Life safety — call <a href="tel:911" class="underline">911</a></span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">P</span>
+          <span class="text-blue-100 text-sm">
+            Building emergency —
+            <a href="tel:+12504756440" class="underline font-semibold hover:text-white">250-475-6440</a>,
+            press 8
+          </span>
+        </div>
+      </div>
+      <a href="/emergency"
+         class="inline-flex items-center gap-1 px-5 py-2.5 border-2 border-white/60 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-sm">
+        Full Emergency Guide →
+      </a>
+    </section>
+
+  </div>
+</BaseLayout>

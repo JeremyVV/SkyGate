@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+---
+
+<BaseLayout
+  title="Trades & Service Access"
+  description="Guidelines for contractors, service providers, and maintenance personnel working at Sky Gate."
+>
+  <PageHeader
+    title="Trades &amp; Service Access"
+    description="Guidelines for contractors, service providers, and maintenance personnel working at Sky Gate."
+    breadcrumb="Trades & Service Access"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+
+    <!-- Welcome -->
+    <section aria-labelledby="welcome-heading">
+      <h2 id="welcome-heading" class="text-2xl font-bold text-navy mb-4">Welcome to Sky Gate</h2>
+      <p class="text-slate-600 leading-relaxed">
+        We appreciate the work trades and service providers do to help maintain the building and
+        support residents. To ensure safe, efficient, and coordinated work across the property,
+        all trades are asked to follow the check-in process below.
+      </p>
+    </section>
+
+    <!-- Check-in -->
+    <section aria-labelledby="checkin-heading" class="bg-navy text-white rounded-2xl p-6 sm:p-8">
+      <h2 id="checkin-heading" class="text-2xl font-bold mb-5 flex items-center gap-3">
+        <span aria-hidden="true">📍</span> Check-In Requirement
+      </h2>
+      <p class="text-blue-100 text-lg font-semibold mb-5">
+        All trades must check in with the Caretaker upon arrival.
+      </p>
+      <ol class="space-y-3 mb-6" role="list">
+        {[
+          'Attend the Community Room to check in',
+          'If the Caretaker is not immediately available, send a message or follow posted instructions for contact',
+          'Confirm the scope of work and location before proceeding',
+        ].map((step, i) => (
+          <li class="flex items-start gap-4">
+            <span class="w-7 h-7 rounded-full bg-white/20 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+              {i + 1}
+            </span>
+            <span class="text-blue-100 text-sm leading-relaxed pt-0.5">{step}</span>
+          </li>
+        ))}
+      </ol>
+      <div>
+        <p class="text-blue-200 text-sm font-semibold mb-3">This helps ensure:</p>
+        <ul class="space-y-2">
+          {[
+            'Awareness of active work on site',
+            'Coordination with other contractors',
+            'Resident safety and minimal disruption',
+          ].map(item => (
+            <li class="flex items-center gap-2 text-blue-100 text-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- During work -->
+    <section aria-labelledby="during-heading">
+      <h2 id="during-heading" class="text-2xl font-bold text-navy mb-5">During Work</h2>
+      <p class="text-slate-600 mb-4 text-sm">While working on site, please:</p>
+      <div class="space-y-3">
+        {[
+          { icon: '📋', text: 'Follow all posted building guidelines and signage' },
+          { icon: '🧹', text: 'Keep work areas clean and safe at all times' },
+          { icon: '🚧', text: 'Avoid blocking access routes, entrances, or parkade lanes' },
+          { icon: '🔇', text: 'Minimise noise and disruption where possible' },
+          { icon: '🤝', text: 'Respect shared spaces and amenities' },
+        ].map(item => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section aria-labelledby="questions-heading" class="bg-white rounded-2xl shadow-md p-6 sm:p-8">
+      <h2 id="questions-heading" class="text-xl font-bold text-navy mb-3 flex items-center gap-2">
+        <span aria-hidden="true">📞</span> Questions or Concerns
+      </h2>
+      <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+        For any questions related to work authorisation, scope of work, scheduling,
+        access to units or common areas, or building systems — contact Proline Management Ltd.
+      </p>
+      <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+        Proline is the authorised property management company for Sky Gate and coordinates
+        all strata-related work and approvals.
+      </p>
+      <a
+        href="https://www.prolinemanagement.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 px-5 py-2.5 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors text-sm"
+      >
+        Proline Management ↗
+      </a>
+    </section>
+
+    <!-- Important notes -->
+    <AlertBox type="warning" title="Important — scope of work">
+      <ul class="space-y-1.5 text-sm">
+        <li>The Caretaker provides on-site coordination only.</li>
+        <li>The Caretaker <strong>does not</strong> approve scope changes or authorise additional work.</li>
+        <li>All approvals and work direction must come through <strong>Proline Management</strong>.</li>
+      </ul>
+    </AlertBox>
+
+    <!-- Emergencies during work -->
+    <section aria-labelledby="emerg-work-heading" class="bg-red-50 border-2 border-red-200 rounded-2xl p-6 sm:p-8">
+      <h2 id="emerg-work-heading" class="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+        <span aria-hidden="true">🚨</span> Emergencies During Work
+      </h2>
+      <p class="text-red-700 text-sm mb-4 leading-relaxed">
+        If an urgent issue arises during work (e.g. water leak, safety hazard, system failure):
+      </p>
+      <ol class="space-y-2 mb-5">
+        {[
+          'Take immediate steps to secure the area if safe to do so',
+          'Notify the Caretaker if available',
+          'Contact Proline\'s emergency line as required',
+        ].map((step, i) => (
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-red-200 text-red-800 text-xs font-bold flex items-center justify-center flex-shrink-0">
+              {i + 1}
+            </span>
+            <span class="text-red-700 text-sm leading-relaxed pt-0.5">{step}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="tel:911"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors text-sm"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Call 911 — Life Safety
+        </a>
+        <a
+          href="tel:+12504756440"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-white font-bold rounded-xl hover:bg-amber-700 transition-colors text-sm"
+        >
+          Proline Emergency — 250-475-6440 (press 8)
+        </a>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <div class="bg-gradient-to-r from-navy/5 to-skyblue/5 border border-skyblue/20 rounded-2xl p-6 text-center">
+      <h2 class="font-bold text-navy text-lg mb-2">Working Together</h2>
+      <p class="text-slate-600 text-sm leading-relaxed max-w-xl mx-auto">
+        Following these guidelines helps ensure that all work at Sky Gate is carried out safely,
+        efficiently, and with minimal disruption to residents. Thank you for your cooperation.
+      </p>
+    </div>
+
+    <!-- Back link -->
+    <div>
+      <a href="/contact" class="inline-flex items-center gap-1 text-skyblue hover:text-skyblue-dark text-sm font-medium transition-colors">
+        ← Back to Contact
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

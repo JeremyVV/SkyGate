@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+---
+
+<BaseLayout
+  title="Community Room"
+  description="Sky Gate's Community Room — a welcoming shared space for casual gatherings, remote work, and everyday connection."
+>
+  <PageHeader
+    title="Community Room"
+    description="A shared space to gather, connect, and recharge."
+    breadcrumb="Community Room"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+
+    <!-- Hero image -->
+    <div class="rounded-2xl overflow-hidden shadow-lg">
+      <img
+        src="/images/Community_Room.jpg"
+        alt="Sky Gate Community Room"
+        class="w-full h-64 sm:h-80 object-cover"
+      />
+    </div>
+
+    <!-- A place to slow down -->
+    <section aria-labelledby="intro-heading">
+      <h2 id="intro-heading" class="text-2xl font-bold text-navy mb-4">A Place to Slow Down</h2>
+      <p class="text-slate-600 leading-relaxed mb-4">
+        The Sky Gate Community Room is designed as a welcoming extension of your home — a comfortable
+        place to meet a neighbour, focus on work or study, or simply enjoy a change of scenery.
+      </p>
+      <p class="text-slate-600 leading-relaxed">
+        Whether you're catching up over coffee, reading, or spending a quiet evening indoors,
+        the space offers a relaxed, community-first atmosphere.
+      </p>
+    </section>
+
+    <!-- Best suited for -->
+    <section aria-labelledby="suited-heading">
+      <h2 id="suited-heading" class="text-2xl font-bold text-navy mb-5">Designed for Everyday Living</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">This space is best suited for:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          { icon: '☕', text: 'Casual meetups with fellow residents' },
+          { icon: '💻', text: 'Remote work or study sessions' },
+          { icon: '🤝', text: 'Small, low-key gatherings' },
+          { icon: '🎲', text: 'Board games or light recreation' },
+          { icon: '🌿', text: 'A quiet place to unwind outside your unit' },
+        ].map(item => (
+          <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-5 py-3.5">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+            <span class="text-slate-700 text-sm">{item.text}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-5 text-slate-500 text-sm leading-relaxed bg-blue-50 border border-blue-100 rounded-xl px-5 py-4">
+        The Community Room is not intended as a large event venue, and works best when shared respectfully
+        as a calm, multi-use space for everyone in the building.
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading" class="text-2xl font-bold text-navy mb-6">Features &amp; Amenities</h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🪑</span>
+            <h3 class="font-bold text-navy">Seating</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-slate-600 text-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+              Large tables with chairs for group seating or workspace use
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🎮</span>
+            <h3 class="font-bold text-navy">Recreation</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Three video game cabinets', 'Foosball table'].map(item => (
+              <li class="flex items-start gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">🍳</span>
+            <h3 class="font-bold text-navy">Kitchen Area</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Fridge', 'Range', 'Tableware'].map(item => (
+              <li class="flex items-start gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-2xl" aria-hidden="true">📶</span>
+            <h3 class="font-bold text-navy">Comfort</h3>
+          </div>
+          <ul class="space-y-2">
+            {['Air conditioning', 'Community WiFi', 'Two televisions'].map(item => (
+              <li class="flex items-start gap-2 text-slate-600 text-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-skyblue flex-shrink-0 mt-1.5" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Etiquette -->
+    <section aria-labelledby="etiquette-heading">
+      <h2 id="etiquette-heading" class="text-2xl font-bold text-navy mb-5">Shared Space Etiquette</h2>
+      <p class="text-slate-600 mb-4 text-sm">To keep the space welcoming for everyone:</p>
+      <div class="space-y-3">
+        {[
+          { icon: '✨', text: 'Leave the room as you found it' },
+          { icon: '🧼', text: 'Clean up after use, including the kitchen area' },
+          { icon: '🔇', text: 'Be mindful of noise levels at all times' },
+          { icon: '📖', text: 'Respect others using the space for work or quiet time' },
+          { icon: '🤝', text: 'Avoid monopolising shared tables or amenities' },
+        ].map(rule => (
+          <div class="flex items-start gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-4">
+            <span class="text-xl flex-shrink-0" aria-hidden="true">{rule.icon}</span>
+            <p class="text-slate-600 text-sm leading-relaxed">{rule.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Shared resource note -->
+    <div class="bg-gradient-to-r from-navy/5 to-skyblue/5 border border-skyblue/20 rounded-2xl p-6">
+      <h2 class="font-bold text-navy text-lg mb-2">A Shared Resource</h2>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        The Community Room is one of Sky Gate's most valued shared spaces. Its flexibility works best
+        when everyone treats it as a calm, respectful environment that balances social use
+        with quiet enjoyment.
+      </p>
+    </div>
+
+    <!-- Issues & Rules -->
+    <section aria-labelledby="issues-heading" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h2 id="issues-heading" class="font-bold text-navy text-lg mb-2 flex items-center gap-2">
+          <span aria-hidden="true">🛠️</span> Issues or Questions
+        </h2>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+          If something isn't working properly or the room needs attention, please report it through the Resident Portal.
+        </p>
+        <a
+          href="https://portal.stratapress.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+        >
+          Report via Portal ↗
+        </a>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h2 class="font-bold text-navy text-lg mb-2 flex items-center gap-2">
+          <span aria-hidden="true">📋</span> Rules &amp; Access
+        </h2>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+          For the most up-to-date usage guidelines and any specific restrictions, refer to the StrataPress Resident Portal.
+        </p>
+        <a
+          href="https://portal.stratapress.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 px-5 py-2.5 bg-skyblue text-white font-semibold rounded-xl hover:bg-skyblue-dark transition-colors text-sm"
+        >
+          View in Portal ↗
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Back link -->
+    <div class="pt-2">
+      <a href="/amenities" class="inline-flex items-center gap-1 text-skyblue hover:text-skyblue-dark text-sm font-medium transition-colors">
+        ← Back to all amenities
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

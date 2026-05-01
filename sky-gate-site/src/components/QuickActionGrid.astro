@@ -1,0 +1,73 @@
+---
+const actions = [
+  {
+    label: 'Report an Issue',
+    href: 'https://portal.stratapress.com/',
+    icon: '📋',
+    description: 'Submit maintenance requests and issue reports via the Resident Portal.',
+    external: true,
+  },
+  {
+    label: 'Visitor Parking',
+    href: '/visitor-parking',
+    icon: '🚗',
+    description: 'Register guest vehicles and understand the parking rules.',
+    external: false,
+  },
+  {
+    label: 'Amenities',
+    href: '/amenities',
+    icon: '🏋️',
+    description: 'Gym, community room, rooftop patio, gardens, and more.',
+    external: false,
+  },
+  {
+    label: 'Rules & Bylaws',
+    href: '/rules-bylaws',
+    icon: '📖',
+    description: 'Access the strata bylaws and community rules.',
+    external: false,
+  },
+  {
+    label: 'EV Charging',
+    href: '/ev-charging',
+    icon: '⚡',
+    description: 'Shared EV charging stations and etiquette guidelines.',
+    external: false,
+  },
+  {
+    label: 'Emergency Help',
+    href: '/emergency',
+    icon: '🆘',
+    description: 'Who to call for building emergencies and urgent issues.',
+    external: false,
+  },
+];
+---
+
+<section class="py-16 bg-slate-50" aria-labelledby="quick-actions-heading">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 id="quick-actions-heading" class="text-3xl font-bold text-navy text-center mb-3 tracking-tight">
+      Quick Actions
+    </h2>
+    <p class="text-slate-500 text-center mb-10 max-w-xl mx-auto">
+      Everything you need as a Sky Gate resident, at your fingertips.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {actions.map(action => (
+        <a
+          href={action.href}
+          {...(action.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          class="group flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 p-6 focus-visible:ring-2 focus-visible:ring-skyblue focus-visible:ring-offset-2 focus:outline-none"
+        >
+          <span class="text-4xl mb-3" aria-hidden="true">{action.icon}</span>
+          <h3 class="text-navy font-bold text-lg mb-2 group-hover:text-skyblue transition-colors">{action.label}</h3>
+          <p class="text-slate-500 text-sm flex-grow leading-relaxed">{action.description}</p>
+          <span class="mt-4 text-skyblue text-sm font-semibold">
+            {action.external ? 'Open portal →' : 'Learn more →'}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

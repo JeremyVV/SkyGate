@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="Search" description="Search Sky Gate website content.">
+  <Fragment slot="head">
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  </Fragment>
+
+  <PageHeader
+    title="Search"
+    description="Find information across the Sky Gate website."
+    breadcrumb="Search"
+  />
+
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <div id="search"></div>
+    <noscript>
+      <p class="text-slate-500 text-sm mt-4">Search requires JavaScript. Please enable it to use this feature.</p>
+    </noscript>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof PagefindUI !== 'undefined') {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        resetStyles: false,
+      });
+    }
+  });
+</script>
+<script is:inline src="/pagefind/pagefind-ui.js"></script>

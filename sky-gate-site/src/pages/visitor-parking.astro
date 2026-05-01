@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout
+  title="Visitor Parking"
+  description="Visitor parking information for Sky Gate residents and their guests — passes, fair use, and availability."
+>
+  <PageHeader
+    title="Visitor Parking"
+    description="Helpful information for residents hosting guests at Sky Gate."
+    breadcrumb="Visitor Parking"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-10">
+
+    <!-- Intro -->
+    <p class="text-slate-600 text-lg leading-relaxed">
+      Visitor parking is a shared amenity intended to support guests visiting Sky Gate residents.
+    </p>
+
+    <!-- How it works -->
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading" class="text-2xl font-bold text-navy mb-5">How Visitor Parking Works</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {[
+          { icon: '🔄', title: 'First come, first served', desc: 'Visitor stalls are available on a first come, first served basis — no reservations.' },
+          { icon: '🪪', title: 'One pass per residence', desc: 'Each residence is issued one visitor parking pass. It must be clearly displayed at all times.' },
+          { icon: '⏱️', title: 'Short-term use', desc: 'Visitor parking is intended for short-term guest visits, helping ensure fair access for everyone.' },
+        ].map(item => (
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col gap-3">
+            <span class="text-3xl" aria-hidden="true">{item.icon}</span>
+            <div>
+              <h3 class="font-semibold text-navy mb-1">{item.title}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Hosting guests -->
+    <section aria-labelledby="hosting-heading">
+      <h2 id="hosting-heading" class="text-2xl font-bold text-navy mb-4">Hosting Guests</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        Residents are responsible for their guests and their use of visitor parking.
+      </p>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <p class="font-semibold text-navy mb-3">If additional parking is needed:</p>
+        <ul class="space-y-2">
+          {[
+            'Side-street parking is available nearby',
+            'Availability may vary depending on time of day',
+          ].map(item => (
+            <li class="flex items-start gap-2 text-slate-600 text-sm">
+              <span class="text-skyblue mt-0.5 flex-shrink-0" aria-hidden="true">→</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fair use -->
+    <section aria-labelledby="fairuse-heading">
+      <h2 id="fairuse-heading" class="text-2xl font-bold text-navy mb-5">Fair Use &amp; Availability</h2>
+      <div class="space-y-3">
+        {[
+          'Visitor stalls are for visiting guests only',
+          'Residents may not use visitor parking for their own vehicles',
+          'Please be mindful of other residents who may also have guests',
+        ].map(item => (
+          <div class="flex items-center gap-3 bg-white rounded-xl border border-slate-100 shadow-sm px-5 py-3.5">
+            <span class="w-6 h-6 rounded-full bg-skyblue/10 text-skyblue flex items-center justify-center text-xs font-bold flex-shrink-0" aria-hidden="true">✓</span>
+            <p class="text-slate-700 text-sm">{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Towing reminder -->
+    <AlertBox type="warning" title="Important reminders">
+      <ul class="space-y-1 text-sm">
+        <li>Vehicles must display a valid visitor pass at all times</li>
+        <li>Unauthorized or improperly parked vehicles may be subject to towing</li>
+      </ul>
+    </AlertBox>
+
+    <!-- Shared resource -->
+    <div class="bg-gradient-to-br from-navy to-navy-light text-white rounded-2xl p-6 sm:p-8">
+      <div class="flex gap-4 items-start">
+        <span class="text-3xl flex-shrink-0" aria-hidden="true">🤝</span>
+        <div>
+          <h2 class="text-lg font-bold mb-2">A Shared Resource</h2>
+          <p class="text-blue-100 text-sm leading-relaxed">
+            Visitor parking works best when everyone uses it thoughtfully. A little consideration
+            helps ensure that all residents can accommodate their guests when needed.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portal CTA -->
+    <section aria-labelledby="rules-update-heading">
+      <h2 id="rules-update-heading" class="text-2xl font-bold text-navy mb-4">Rules &amp; Updates</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        For full visitor parking rules, limits, and any updates, please refer to the
+        StrataPress Resident Portal.
+      </p>
+      <CTAButton href="https://portal.stratapress.com/" label="View in Resident Portal" variant="primary" external={true} />
+    </section>
+
+  </div>
+</BaseLayout>

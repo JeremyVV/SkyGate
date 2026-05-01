@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  breadcrumb?: string;
+}
+
+const { title, description, breadcrumb } = Astro.props;
+---
+
+<div class="bg-gradient-to-r from-navy to-navy-light text-white py-12 px-4" data-pagefind-ignore>
+  <div class="max-w-4xl mx-auto">
+    {breadcrumb && (
+      <nav aria-label="Breadcrumb" class="mb-3">
+        <ol class="flex items-center gap-2 text-sm text-blue-200">
+          <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+          <li aria-hidden="true" class="text-blue-300">&rsaquo;</li>
+          <li class="text-white font-medium" aria-current="page">{breadcrumb}</li>
+        </ol>
+      </nav>
+    )}
+    <h1 class="text-3xl sm:text-4xl font-bold mb-3 tracking-tight">{title}</h1>
+    {description && (
+      <p class="text-blue-100 text-lg max-w-2xl leading-relaxed">{description}</p>
+    )}
+  </div>
+</div>
