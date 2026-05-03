@@ -1,20 +1,26 @@
 ---
-const col1 = [
+const siteLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Amenities', href: '/amenities' },
-  { label: 'Visitor Parking', href: '/visitor-parking' },
-  { label: 'EV Charging', href: '/ev-charging' },
-  { label: 'Garbage & Recycling', href: '/garbage-recycling' },
   { label: 'Search', href: '/search' },
 ];
 
-const col2 = [
+const residentsLinks = [
   { label: 'Owners & Residents', href: '/residents' },
   { label: 'Rules & Bylaws', href: '/rules-bylaws' },
+  { label: 'Maintenance Warranty', href: '/maintenance-warranty' },
   { label: 'Condos for Sale', href: '/homes-for-sale' },
 ];
 
-const col3 = [
+const buildingLinks = [
+  { label: 'Amenities', href: '/amenities' },
+  { label: 'Neighborhood', href: '/neighborhood' },
+  { label: 'Visitor Parking', href: '/visitor-parking' },
+  { label: 'EV Charging', href: '/ev-charging' },
+  { label: 'Garbage & Recycling', href: '/garbage-recycling' },
+  { label: 'Property Map', href: '/property-map' },
+];
+
+const contactLinks = [
   { label: 'Contact', href: '/contact' },
   { label: 'Emergency Help', href: '/emergency' },
   { label: 'Trades Access', href: '/trades-access' },
@@ -44,11 +50,11 @@ const col3 = [
         </div>
       </div>
 
-      <!-- Links col 1 -->
+      <!-- Site links -->
       <div>
         <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Site</h3>
         <ul class="space-y-2">
-          {col1.map(link => (
+          {siteLinks.map(link => (
             <li>
               <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
                 {link.label}
@@ -58,11 +64,11 @@ const col3 = [
         </ul>
       </div>
 
-      <!-- Links col 2 -->
+      <!-- Owners & Residents -->
       <div>
         <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Owners &amp; Residents</h3>
         <ul class="space-y-2">
-          {col2.map(link => (
+          {residentsLinks.map(link => (
             <li>
               <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
                 {link.label}
@@ -72,11 +78,25 @@ const col3 = [
         </ul>
       </div>
 
-      <!-- Links col 3 — Contact group -->
+      <!-- Building & Property -->
+      <div>
+        <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Building &amp; Property</h3>
+        <ul class="space-y-2">
+          {buildingLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
       <div>
         <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h3>
         <ul class="space-y-2">
-          {col3.map(link => (
+          {contactLinks.map(link => (
             <li>
               <a href={link.href} class="text-sm text-blue-200 hover:text-white transition-colors">
                 {link.label}
