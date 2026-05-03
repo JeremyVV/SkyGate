@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AlertBox from '../components/AlertBox.astro';
+
+type WarrantyRow = {
+  category: string;
+  subcategory: string;
+  responsibility: 'Owner' | 'Strata' | 'Both';
+  standardPeriod: string;
+  doublePeriod: string;
+  expiryB: string;
+  expiryAC: string;
+  description: string;
+};
+
+const warrantyRows: WarrantyRow[] = [
+  {
+    category: 'Materials & Labour',
+    subcategory: 'Unit interiors — finishes & fixtures',
+    responsibility: 'Owner',
+    standardPeriod: '1 yr',
+    doublePeriod: '2 yrs',
+    expiryB: '2024',
+    expiryAC: '2025',
+    description: 'Defects in materials and labour inside your strata unit — cabinets, flooring, millwork, paint, and installed fixtures.',
+  },
+  {
+    category: 'Materials & Labour',
+    subcategory: 'Common area finishes',
+    responsibility: 'Strata',
+    standardPeriod: '15 mo',
+    doublePeriod: '2 yrs',
+    expiryB: '2024',
+    expiryAC: '2025',
+    description: 'Materials and labour on shared lobbies, hallways, parkade finishes, and amenity rooms.',
+  },
+  {
+    category: 'Materials & Labour',
+    subcategory: 'Appliances',
+    responsibility: 'Owner',
+    standardPeriod: '1 yr',
+    doublePeriod: '2 yrs',
+    expiryB: '2024',
+    expiryAC: '2025',
+    description: 'Full 2-year coverage on all included appliances — doubled from the standard manufacturer warranty.',
+  },
+  {
+    category: 'Mechanical Systems',
+    subcategory: 'In-unit plumbing & electrical',
+    responsibility: 'Owner',
+    standardPeriod: '2 yrs',
+    doublePeriod: '4 yrs',
+    expiryB: '2026',
+    expiryAC: '2027',
+    description: 'Defects in materials, labour, and design for plumbing, electrical, heating, and ventilation inside the unit.',
+  },
+  {
+    category: 'Mechanical Systems',
+    subcategory: 'Shared mechanical systems',
+    responsibility: 'Strata',
+    standardPeriod: '2 yrs',
+    doublePeriod: '4 yrs',
+    expiryB: '2026',
+    expiryAC: '2027',
+    description: 'Building-wide electrical panels, common plumbing risers, elevators, and ventilation equipment.',
+  },
+  {
+    category: 'Building Envelope',
+    subcategory: 'Windows, doors & caulking',
+    responsibility: 'Owner',
+    standardPeriod: '2 yrs',
+    doublePeriod: '4 yrs',
+    expiryB: '2026',
+    expiryAC: '2027',
+    description: 'Defects in caulking, seals, and window/door units that could cause detachment or material damage.',
+  },
+  {
+    category: 'Building Envelope',
+    subcategory: 'Exterior cladding & waterproofing',
+    responsibility: 'Strata',
+    standardPeriod: '5 yrs',
+    doublePeriod: '10 yrs',
+    expiryB: '2032',
+    expiryAC: '2033',
+    description: 'Defects in the building envelope — including unintended water penetration causing or likely to cause material damage.',
+  },
+  {
+    category: 'Structure',
+    subcategory: 'Load-bearing structure',
+    responsibility: 'Both',
+    standardPeriod: '10 yrs',
+    doublePeriod: '20 yrs',
+    expiryB: '2042',
+    expiryAC: '2043',
+    description: 'Failures in load-bearing components — columns, beams, foundations, and anything that structurally compromises residential use.',
+  },
+];
+
+const categories = [...new Set(warrantyRows.map((r) => r.category))];
+
+const responsibilityColor: Record<string, string> = {
+  Owner: 'bg-gold/10 text-gold font-semibold',
+  Strata: 'bg-skyblue/10 text-skyblue font-semibold',
+  Both: 'bg-slate-200 text-navy font-semibold',
+};
+
+const currentYear = new Date().getFullYear();
+
+function isExpired(year: string): boolean {
+  return parseInt(year) <= currentYear;
+}
+
+function isExpiringSoon(year: string): boolean {
+  const y = parseInt(year);
+  return y > currentYear && y <= currentYear + 1;
+}
+
+function expiryClass(year: string): string {
+  if (isExpired(year)) return 'text-slate-400 line-through';
+  if (isExpiringSoon(year)) return 'text-gold font-semibold';
+  return 'text-navy font-semibold';
+}
+---
+
+<BaseLayout
+  title="Maintenance Warranty"
+  description="Double Warranty™ coverage for Sky Gate across all three buildings — materials, labour, and building systems."
+>
+  <PageHeader
+    title="Maintenance Warranty"
+    description="Coverage periods and responsibilities for all three buildings."
+    breadcrumb="Maintenance Warranty"
+  />
+
+  <div class="max-w-6xl mx-auto px-4 py-12 space-y-8" data-pagefind-body>
+
+    <!-- Coverage overview -->
+    <section aria-labelledby="coverage-heading">
+      <div class="flex flex-col sm:flex-row items-start gap-6 bg-gradient-to-br from-navy to-navy-light text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+        <div class="flex-shrink-0 w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center text-3xl" aria-hidden="true">
+          🛡️
+        </div>
+        <div class="flex-1">
+          <h2 id="coverage-heading" class="text-xl font-bold mb-2">Highstreet Double Warranty™</h2>
+          <p class="text-blue-100 text-sm leading-relaxed mb-4">
+            All Sky Gate homes are covered under Highstreet's <strong>2-4-10-20</strong> Double Warranty —
+            double the BC statutory standard of 1-2-5-10. Coverage commences on the earlier of first occupancy
+            or transfer of legal title. Owner-caused damage, normal wear and tear, and failure to mitigate damage are excluded.
+          </p>
+          <a
+            href="https://buyhighstreet.ca/sky-gate/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-white font-semibold rounded-xl hover:bg-gold-dark transition-colors text-sm"
+          >
+            Submit a Claim
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Building info -->
+    <section aria-labelledby="buildings-heading">
+      <h2 id="buildings-heading" class="text-2xl font-bold text-navy mb-5">Buildings & Warranty Start Dates</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <p class="text-lg font-bold text-navy mb-1">Building B</p>
+          <p class="text-sm text-slate-600">Warranty commenced <strong>2022</strong></p>
+          <p class="text-xs text-slate-500 mt-2">2461 Gateway Rd (V9B 5X3)</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <p class="text-lg font-bold text-navy mb-1">Building A</p>
+          <p class="text-sm text-slate-600">Warranty commenced <strong>2023</strong></p>
+          <p class="text-xs text-slate-500 mt-2">2461 Gateway Rd</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+          <p class="text-lg font-bold text-navy mb-1">Building C (Olive+)</p>
+          <p class="text-sm text-slate-600">Warranty commenced <strong>2023</strong></p>
+          <p class="text-xs text-slate-500 mt-2">2461 Gateway Rd (V9B 6M6)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage table -->
+    <section aria-labelledby="coverage-table-heading">
+      <h2 id="coverage-table-heading" class="text-2xl font-bold text-navy mb-5">Coverage Details by Category</h2>
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-navy text-white">
+              <tr>
+                <th class="px-5 py-4 text-left font-semibold text-xs tracking-wider w-48">Coverage Area</th>
+                <th class="px-4 py-4 text-left font-semibold text-xs tracking-wider w-24">Responsible</th>
+                <th class="px-4 py-4 text-left font-semibold text-xs tracking-wider w-20">BC Standard</th>
+                <th class="px-4 py-4 text-left font-semibold text-xs tracking-wider w-20">Double Coverage</th>
+                <th class="px-4 py-4 text-left font-semibold text-xs tracking-wider">Bldg B (2022)</th>
+                <th class="px-4 py-4 text-left font-semibold text-xs tracking-wider">Bldgs A & C (2023)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              {categories.map((cat) => {
+                const rows = warrantyRows.filter((r) => r.category === cat);
+                return rows.map((row, i) => (
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-5 py-4">
+                      {i === 0 && <p class="text-xs uppercase text-slate-400 font-semibold mb-1.5">{cat}</p>}
+                      <p class="font-medium text-slate-800">{row.subcategory}</p>
+                    </td>
+                    <td class="px-4 py-4">
+                      <span class={`inline-block text-xs px-2 py-1 rounded ${responsibilityColor[row.responsibility]}`}>
+                        {row.responsibility}
+                      </span>
+                    </td>
+                    <td class="px-4 py-4 text-slate-600">{row.standardPeriod}</td>
+                    <td class="px-4 py-4 font-semibold text-skyblue">{row.doublePeriod}</td>
+                    <td class="px-4 py-4">
+                      <span class={expiryClass(row.expiryB)}>{row.expiryB}</span>
+                      {isExpired(row.expiryB) && <span class="text-xs text-slate-400 ml-1">(exp.)</span>}
+                      {isExpiringSoon(row.expiryB) && <span class="text-xs text-gold ml-1">(soon)</span>}
+                    </td>
+                    <td class="px-4 py-4">
+                      <span class={expiryClass(row.expiryAC)}>{row.expiryAC}</span>
+                      {isExpired(row.expiryAC) && <span class="text-xs text-slate-400 ml-1">(exp.)</span>}
+                      {isExpiringSoon(row.expiryAC) && <span class="text-xs text-gold ml-1">(soon)</span>}
+                    </td>
+                  </tr>
+                ));
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Owner obligations -->
+    <section aria-labelledby="obligations-heading">
+      <h2 id="obligations-heading" class="text-2xl font-bold text-navy mb-5">Owner Obligations</h2>
+      <p class="text-slate-600 mb-5 leading-relaxed">
+        These obligations apply to all buildings and all warranty periods.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+          <h3 class="font-semibold text-navy mb-2">Duty to Mitigate</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Owners must take reasonable steps to prevent damage from worsening. Failure to mitigate may reduce or void a claim.
+          </p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+          <h3 class="font-semibold text-navy mb-2">Written Notice</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Defects must be reported in writing to Highstreet promptly. Late notice past the coverage deadline may result in denial.
+          </p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+          <h3 class="font-semibold text-navy mb-2">Coverage Exclusions</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Neither warranty covers owner negligence, unauthorized renovations, owner-supplied materials, pests, acts of nature, or normal wear.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important note -->
+    <AlertBox type="info" title="Important">
+      <p>
+        Warranty commences on the earlier of occupancy permit or transfer of legal title. Coverage limits apply.
+        Review your individual policy for exact terms. For questions, visit
+        <a href="https://buyhighstreet.ca/sky-gate/" target="_blank" rel="noopener noreferrer" class="underline font-semibold hover:opacity-80">
+          buyhighstreet.ca/sky-gate/
+        </a>
+      </p>
+    </AlertBox>
+
+  </div>
+</BaseLayout>
